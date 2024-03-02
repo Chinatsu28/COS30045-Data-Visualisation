@@ -13,15 +13,13 @@ const svg = d3.select("#map-container")
     .attr("height", enlargedHeight);
 
 // Load the GeoJSON data for Vietnam
-d3.json("data/japan.json").then(function (geojson) {
+d3.json("../data/japan.json").then(function (geojson) {
     // Create a projection for the map
     const projection = d3.geoMercator()
         .fitSize([enlargedWidth, enlargedHeight], geojson);
 
     // Create a path generator
     const path = d3.geoPath().projection(projection);
-
-    let selectedfeature = null;
 
     // Draw the map
     const features = svg.selectAll("path")
