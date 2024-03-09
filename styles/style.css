@@ -1,8 +1,8 @@
-.tooltip {
-    position: absolute;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 12px;
-}
+.legendBox {
+    border: 1px solid cornflowerblue;
+    border-radius: 10px;
+    height 400px;
+    padding: 10px; /* Optional: Add padding for better appearance */
+    background-color: #f8f9fa;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+  }
