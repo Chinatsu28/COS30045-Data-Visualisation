@@ -5,7 +5,7 @@ const originalHeight = 600;
 // Enlarge the SVG by 1.5 times
 const enlargedWidth = originalWidth * 1.5;
 const enlargedHeight = originalHeight * 1.5;
-
+var selected = null;
 // Append an SVG container to the map-container div
 const svg = d3
   .select("#choropleth")
@@ -68,11 +68,17 @@ d3.csv("../data/a001.csv").then(function (data) {
 
         d3.select(this).style("fill", "orange");
       })
+      .on("click", function (event, d) {
+        // Add a click event to the map
+        
+      })
       .on("mouseout", function () {
         // Remove the tooltip box on mouseout
         svg.selectAll(".tooltip-box").remove();
         svg.selectAll(".tooltip-text").remove();
         d3.select(this).style("fill", "lightblue");
       });
+
+      
   });
 });
