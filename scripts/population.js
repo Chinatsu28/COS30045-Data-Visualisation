@@ -1,6 +1,6 @@
 function init() {
   d3.csv("../data/population.csv").then(function (data) {
-    console.log(data);
+    console.table(data);
     // Convert numerical values from strings to numbers
     data.forEach(function (d) {
       d.Inflows = +d.Inflows;
