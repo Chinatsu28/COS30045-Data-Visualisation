@@ -68,10 +68,6 @@ d3.csv("../data/a001.csv").then(function (data) {
 
         d3.select(this).style("fill", "orange");
       })
-      .on("click", function (event, d) {
-        // Add a click event to the map
-        
-      })
       .on("mouseout", function () {
         // Remove the tooltip box on mouseout
         svg.selectAll(".tooltip-box").remove();
