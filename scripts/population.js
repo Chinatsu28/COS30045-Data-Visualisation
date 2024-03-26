@@ -1,4 +1,4 @@
-function init() {
+function ditmednk() {
   d3.csv("../data/population.csv").then(function (data) {
     console.table(data);
     // Convert numerical values from strings to numbers
@@ -222,4 +222,4 @@ function init() {
   });
 }
 
-window.onload = init;
+window.onload = ditmednk;

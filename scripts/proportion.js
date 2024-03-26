@@ -1,78 +1,172 @@
-const width = 800;
-    const height = 400;
-    const margin = { top: 20, right: 40, bottom: 40, left: 40 };
-    const innerWidth = width - margin.left - margin.right;
-    const innerHeight = height - margin.top - margin.bottom;
+function init(data) {
+   var w = 600;
+   var h = 600;
+   var padding = 55;
+   var outerRadius = w / 3;
+   var innerRadius = w / 6;
+ 
+   var arc = d3.arc()
+     .innerRadius(innerRadius)
+     .outerRadius(outerRadius);
+ 
+   var pie = d3.pie()
+     .value(function(d) { return d.value; });
+ 
+   var svg = d3.select("#proportion")
+     .append("svg")
+     .attr("width", w)
+     .attr("height", h);
+ 
+   var tooltip = d3.select("body")
+     .append("div")
+     .attr("class", "tooltip")
+     .style("opacity", 0);
+ 
+   var arcs = svg.selectAll("g.arc")
+     .data(pie(data))
+     .enter()
+     .append("g")
+     .attr("class", "arc")
+     .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")")
+     .on("mouseover", function(event, d) {
+      d3.select(this).select("path")
+          .transition()
+          .duration(100)
+          .attr("d", arc.padAngle(0.01));
+  
+      tooltip.transition()
+          .duration(200)
+          .style("opacity", .9);
+  
+          const tooltipWidth = 100; // Set the width of the tooltip box
+          const tooltipHeight = 40; // Set the height of the tooltip box
+  
+          // Calculate the position for the tooltip
+          const mouseX = d3.event.pageX;
+          const mouseY = d3.event.pageY;
+  
+          const tooltipX = mouseX - tooltipWidth / 2;
+          const tooltipY = mouseY - tooltipHeight - 400; // Adjust for a small gap
+  
+          // Add a tooltip box
+          svg
+            .append("rect")
+            .attr("class", "tooltip-box")
+            .attr("x", tooltipX)
+            .attr("y", tooltipY)
+            .attr("width", tooltipWidth + 10)
+            .attr("height", tooltipHeight)
+            .attr("fill", "rgba(62,197,255,0.8)")
+            .style("border-radius", "10px"); // Orange background color
+  
+          // Add text to the tooltip box
+          svg
+            .append("text")
+            .attr("class", "tooltip-text")
+            .attr("x", tooltipX + tooltipWidth / 2)
+            .attr("y", tooltipY + tooltipHeight / 2)
+            .attr("dy", "0.35em")
+            .attr("text-anchor", "middle")
+            .text(d.data.value);
+  })
+  .on("mouseout", function() {
+      d3.select(this).select("path")
+          .transition()
+          .duration(100)
+          .attr("d", arc.padAngle(0.03));
+  
+      tooltip.transition()
+          .duration(500)
+          .style("opacity", 0);
 
-    // Create SVG container
-    const svg = d3.select("#proportion")
-                  .append("svg")
-                  .attr("width", width)
-                  .attr("height", height);
+          svg.selectAll(".tooltip-box").remove();
+        svg.selectAll(".tooltip-text").remove();
+        d3.select(this).style("fill", "lightblue");
+  });
+  
+ 
+   arcs.append("path")
+     .attr("fill", function(d, i) {
+       return d3.schemeCategory10[i];
+     })
+     .attr("d", arc.padAngle(0.03));
+   
+   // Legend
+   var legend = svg.selectAll(".legend")
+       .data(data.map(function(d) { return d.label; }))
+       .enter().append("g")
+       .attr("class", "legend")
+       .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
-    // Load data from CSV
-    d3.csv("../data/immigration_proportion.csv").then(function(data) {
-      console.table("Data: " + data);
-      // Remove 2021 data
-      data = data.filter(d => d.Year !== "2021");
+   // Legend rects
+   legend.append("rect")
+       .attr("x", w - 18)
+       .attr("width", 18)
+       .attr("height", 18)
+       .style("fill", function(d, i) { return d3.schemeCategory10[i]; });
 
-      // Group data into 10-year intervals
-      const groupedData = [];
-      for (let i = 0; i < data.length; i += 10) {
-        groupedData.push(data.slice(i, i + 10));
-      }
+   // Legend text
+   legend.append("text")
+       .attr("x", w - 24)
+       .attr("y", 9)
+       .attr("dy", ".35em")
+       .style("text-anchor", "end")
+       .text(function(d) { return d; });
+ }
 
-      // Define scales
-      const xScale = d3.scaleBand()
-                      .domain(groupedData.map((d, i) => i))
-                      .range([margin.left, innerWidth + margin.left])
-                      .padding(0.1);
+ // Define a global variable to hold the selected year
+// Define a global variable to hold the selected year
+var selectedYear = "2021";
 
-      const yScale = d3.scaleLinear()
-                      .domain([0, d3.max(data, d => +d.Value)])
-                      .range([innerHeight + margin.top, margin.top]);
+// Function to update the chart based on the selected year
+function updateChart(data) {
+   // Filter data for the selected year
+   var filteredData = data.map(function(d) {
+      return {
+         label: d.Country,
+         value: +d[selectedYear] || 0 // Convert value to a number, default to 0 if no data for the selected year
+      };
+   });
 
-      // Define line generator
-      const line = d3.line()
-                     .x((d, i) => xScale(i))
-                     .y(d => yScale(+d.Value));
+   
 
-      // Draw lines
-      svg.selectAll("path")
-         .data(groupedData)
-         .join("path")
-         .attr("d", d => line(d))
-         .attr("fill", "none")
-         .attr("stroke", "steelblue");
+   // Remove the existing chart
+   d3.select("#proportion").select("svg").remove();
 
-      // Draw x-axis
-      svg.append("g")
-         .attr("transform", `translate(0, ${innerHeight + margin.top})`)
-         .call(d3.axisBottom(xScale).tickFormat(i => `${i * 10 + 1950}-${i * 10 + 1959}`))
-         .selectAll("text")
-         .style("text-anchor", "end")
-         .attr("dx", "-.8em")
-         .attr("dy", ".15em")
-         .attr("transform", "rotate(-65)");
+   // Render the updated chart
+   init(filteredData);
+}
 
-      // Draw y-axis
-      svg.append("g")
-         .attr("transform", `translate(${margin.left}, 0)`)
-         .call(d3.axisLeft(yScale));
+window.onload = function() {
+   d3.csv("../data/immigration_proportion.csv").then(function(data) {
+      // Initial rendering of the chart with the default year
+      updateChart(data);
 
-      // Add labels
-      svg.append("text")
-         .attr("transform", `translate(${width / 2}, ${height - 10})`)
-         .style("text-anchor", "middle")
-         .text("Year");
+      // Event listeners to change the selected year
+      d3.select("#pie2020").on("click", function () {
+         selectedYear = "2020";
+         updateChart(data);
+      });
+      d3.select("#pie2021").on("click", function () {
+         selectedYear = "2021";
+         updateChart(data);
+      });
+      d3.select("#pie2019").on("click", function () {
+         selectedYear = "2019";
+         updateChart(data);
+      });
+      d3.select("#pie2018").on("click", function () {
+         selectedYear = "2018";
+         updateChart(data);
+      });
+      d3.select("#pie2017").on("click", function () {
+         selectedYear = "2017";
+         updateChart(data);
+      });
+   }).catch(function(error) {
+      console.error("Error loading data:", error); // Log any error that occurs during data loading
+   });
+};
 
-      svg.append("text")
-         .attr("transform", "rotate(-90)")
-         .attr("y", 0)
-         .attr("x", 0 - (height / 2))
-         .attr("dy", "1em")
-         .style("text-anchor", "middle")
-         .text("Value");
-    }).catch(function(error) {
-      console.error("Error loading the data: ", error);
-    });
+
+ 

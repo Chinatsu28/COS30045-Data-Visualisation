@@ -1,0 +1,1649 @@
+{
+    "prefectures": [
+        {
+            "name": "Hokkaido",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 8897,
+                    "outflow": 9769
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 8897,
+                    "outflow": 9769
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 8897,
+                    "outflow": 9769
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 8897,
+                    "outflow": 9769
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 8897,
+                    "outflow": 9769
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 8897,
+                    "outflow": 9769
+                }
+            ]
+        },
+        {
+            "name": "Aomori",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 2718,
+                    "outflow": 3647
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 2718,
+                    "outflow": 3647
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 2718,
+                    "outflow": 3647
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 2718,
+                    "outflow": 3647
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 2718,
+                    "outflow": 3647
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 2718,
+                    "outflow": 3647
+                }
+            ]
+        },
+        {
+            "name": "Iwate",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 2707,
+                    "outflow": 3474
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 2707,
+                    "outflow": 3474
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 2707,
+                    "outflow": 3474
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 2707,
+                    "outflow": 3474
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 2707,
+                    "outflow": 3474
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 2707,
+                    "outflow": 3474
+                }
+            ]
+        },
+        {
+            "name": "Miyagi",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 7653,
+                    "outflow": 7893
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 7653,
+                    "outflow": 7893
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 7653,
+                    "outflow": 7893
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 7653,
+                    "outflow": 7893
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 7653,
+                    "outflow": 7893
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 7653,
+                    "outflow": 7893
+                }
+            ]
+        },
+        {
+            "name": "Akita",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 1782,
+                    "outflow": 2267
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 1782,
+                    "outflow": 2267
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 1782,
+                    "outflow": 2267
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 1782,
+                    "outflow": 2267
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 1782,
+                    "outflow": 2267
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 1782,
+                    "outflow": 2267
+                }
+            ]
+        },
+        {
+            "name": "Yamagata",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 2111,
+                    "outflow": 2754
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 2111,
+                    "outflow": 2754
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 2111,
+                    "outflow": 2754
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 2111,
+                    "outflow": 2754
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 2111,
+                    "outflow": 2754
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 2111,
+                    "outflow": 2754
+                }
+            ]
+        },
+        {
+            "name": "Fukushima",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 4845,
+                    "outflow": 7649
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 4845,
+                    "outflow": 7649
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 4845,
+                    "outflow": 7649
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 4845,
+                    "outflow": 7649
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 4845,
+                    "outflow": 7649
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 4845,
+                    "outflow": 7649
+                }
+            ]
+        },
+        {
+            "name": "Ibaraki",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 14572,
+                    "outflow": 15038
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 14572,
+                    "outflow": 15038
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 14572,
+                    "outflow": 15038
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 14572,
+                    "outflow": 15038
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 14572,
+                    "outflow": 15038
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 14572,
+                    "outflow": 15038
+                }
+            ]
+        },
+        {
+            "name": "Tochigi",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 18628,
+                    "outflow": 10944
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 18628,
+                    "outflow": 10944
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 18628,
+                    "outflow": 10944
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 18628,
+                    "outflow": 10944
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 18628,
+                    "outflow": 10944
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 18628,
+                    "outflow": 10944
+                }
+            ]
+        },
+        {
+            "name": "Gumma",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 18550,
+                    "outflow": 11204
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 18550,
+                    "outflow": 11204
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 18550,
+                    "outflow": 11204
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 18550,
+                    "outflow": 11204
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 18550,
+                    "outflow": 11204
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 18550,
+                    "outflow": 11204
+                }
+            ]
+        },
+        {
+            "name": "Saitama",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 9478,
+                    "outflow": 8245
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 9478,
+                    "outflow": 8245
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 9478,
+                    "outflow": 8245
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 9478,
+                    "outflow": 8245
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 9478,
+                    "outflow": 8245
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 9478,
+                    "outflow": 8245
+                }
+            ]
+        },
+        {
+            "name": "Chiba",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 80637,
+                    "outflow": 78244
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 80637,
+                    "outflow": 78244
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 80637,
+                    "outflow": 78244
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 80637,
+                    "outflow": 78244
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 80637,
+                    "outflow": 78244
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 80637,
+                    "outflow": 78244
+                }
+            ]
+        },
+        {
+            "name": "Tokyo",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 227066,
+                    "outflow": 192924
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 227066,
+                    "outflow": 192924
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 227066,
+                    "outflow": 192924
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 227066,
+                    "outflow": 192924
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 227066,
+                    "outflow": 192924
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 227066,
+                    "outflow": 192924
+                }
+            ]
+        },
+        {
+            "name": "Kanagawa",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 118271,
+                    "outflow": 103969
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 118271,
+                    "outflow": 103969
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 118271,
+                    "outflow": 103969
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 118271,
+                    "outflow": 103969
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 118271,
+                    "outflow": 103969
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 118271,
+                    "outflow": 103969
+                }
+            ]
+        },
+        {
+            "name": "Niigata",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 5626,
+                    "outflow": 7088
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 5626,
+                    "outflow": 7088
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 5626,
+                    "outflow": 7088
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 5626,
+                    "outflow": 7088
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 5626,
+                    "outflow": 7088
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 5626,
+                    "outflow": 7088
+                }
+            ]
+        },
+        {
+            "name": "Toyama",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 3477,
+                    "outflow": 3929
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 3477,
+                    "outflow": 3929
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 3477,
+                    "outflow": 3929
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 3477,
+                    "outflow": 3929
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 3477,
+                    "outflow": 3929
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 3477,
+                    "outflow": 3929
+                }
+            ]
+        },
+        {
+            "name": "Ishikawa",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 4629,
+                    "outflow": 5244
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 4629,
+                    "outflow": 5244
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 4629,
+                    "outflow": 5244
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 4629,
+                    "outflow": 5244
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 4629,
+                    "outflow": 5244
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 4629,
+                    "outflow": 5244
+                }
+            ]
+        },
+        {
+            "name": "Fukui",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 2422,
+                    "outflow": 3273
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 2422,
+                    "outflow": 3273
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 2422,
+                    "outflow": 3273
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 2422,
+                    "outflow": 3273
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 2422,
+                    "outflow": 3273
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 2422,
+                    "outflow": 3273
+                }
+            ]
+        },
+        {
+            "name": "Yamanashi",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 3819,
+                    "outflow": 3965
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 3819,
+                    "outflow": 3965
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 3819,
+                    "outflow": 3965
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 3819,
+                    "outflow": 3965
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 3819,
+                    "outflow": 3965
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 3819,
+                    "outflow": 3965
+                }
+            ]
+        },
+        {
+            "name": "Nagano",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 7843,
+                    "outflow": 8325
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 7843,
+                    "outflow": 8325
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 7843,
+                    "outflow": 8325
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 7843,
+                    "outflow": 8325
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 7843,
+                    "outflow": 8325
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 7843,
+                    "outflow": 8325
+                }
+            ]
+        },
+        {
+            "name": "Gifu",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 8126,
+                    "outflow": 9255
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 8126,
+                    "outflow": 9255
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 8126,
+                    "outflow": 9255
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 8126,
+                    "outflow": 9255
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 8126,
+                    "outflow": 9255
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 8126,
+                    "outflow": 9255
+                }
+            ]
+        },
+        {
+            "name": "Shizuoka",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 14686,
+                    "outflow": 16224
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 14686,
+                    "outflow": 16224
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 14686,
+                    "outflow": 16224
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 14686,
+                    "outflow": 16224
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 14686,
+                    "outflow": 16224
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 14686,
+                    "outflow": 16224
+                }
+            ]
+        },
+        {
+            "name": "Aichi",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 30994,
+                    "outflow": 32847
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 30994,
+                    "outflow": 32847
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 30994,
+                    "outflow": 32847
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 30994,
+                    "outflow": 32847
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 30994,
+                    "outflow": 32847
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 30994,
+                    "outflow": 32847
+                }
+            ]
+        },
+        {
+            "name": "Mie",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 7608,
+                    "outflow": 9207
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 7608,
+                    "outflow": 9207
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 7608,
+                    "outflow": 9207
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 7608,
+                    "outflow": 9207
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 7608,
+                    "outflow": 9207
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 7608,
+                    "outflow": 9207
+                }
+            ]
+        },
+        {
+            "name": "Shiga",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 7661,
+                    "outflow": 7668
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 7661,
+                    "outflow": 7668
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 7661,
+                    "outflow": 7668
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 7661,
+                    "outflow": 7668
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 7661,
+                    "outflow": 7668
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 7661,
+                    "outflow": 7668
+                }
+            ]
+        },
+        {
+            "name": "Kyoto",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 14863,
+                    "outflow": 15522
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 14863,
+                    "outflow": 15522
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 14863,
+                    "outflow": 15522
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 14863,
+                    "outflow": 15522
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 14863,
+                    "outflow": 15522
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 14863,
+                    "outflow": 15522
+                }
+            ]
+        },
+        {
+            "name": "Osaka",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 44468,
+                    "outflow": 41770
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 44468,
+                    "outflow": 41770
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 44468,
+                    "outflow": 41770
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 44468,
+                    "outflow": 41770
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 44468,
+                    "outflow": 41770
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 44468,
+                    "outflow": 41770
+                }
+            ]
+        },
+        {
+            "name": "Hyogo",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 23181,
+                    "outflow": 25080
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 23181,
+                    "outflow": 25080
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 23181,
+                    "outflow": 25080
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 23181,
+                    "outflow": 25080
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 23181,
+                    "outflow": 25080
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 23181,
+                    "outflow": 25080
+                }
+            ]
+        },
+        {
+            "name": "Nara",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 6129,
+                    "outflow": 6460
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 6129,
+                    "outflow": 6460
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 6129,
+                    "outflow": 6460
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 6129,
+                    "outflow": 6460
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 6129,
+                    "outflow": 6460
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 6129,
+                    "outflow": 6460
+                }
+            ]
+        },
+        {
+            "name": "Wakayama",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 3013,
+                    "outflow": 3543
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 3013,
+                    "outflow": 3543
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 3013,
+                    "outflow": 3543
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 3013,
+                    "outflow": 3543
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 3013,
+                    "outflow": 3543
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 3013,
+                    "outflow": 3543
+                }
+            ]
+        },
+        {
+            "name": "Tottori",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 2121,
+                    "outflow": 2559
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 2121,
+                    "outflow": 2559
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 2121,
+                    "outflow": 2559
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 2121,
+                    "outflow": 2559
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 2121,
+                    "outflow": 2559
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 2121,
+                    "outflow": 2559
+                }
+            ]
+        },
+        {
+            "name": "Shimane",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 2674,
+                    "outflow": 3147
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 2674,
+                    "outflow": 3147
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 2674,
+                    "outflow": 3147
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 2674,
+                    "outflow": 3147
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 2674,
+                    "outflow": 3147
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 2674,
+                    "outflow": 3147
+                }
+            ]
+        },
+        {
+            "name": "Okayama",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 7229,
+                    "outflow": 8635
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 7229,
+                    "outflow": 8635
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 7229,
+                    "outflow": 8635
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 7229,
+                    "outflow": 8635
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 7229,
+                    "outflow": 8635
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 7229,
+                    "outflow": 8635
+                }
+            ]
+        },
+        {
+            "name": "Hiroshima",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 11165,
+                    "outflow": 14017
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 11165,
+                    "outflow": 14017
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 11165,
+                    "outflow": 14017
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 11165,
+                    "outflow": 14017
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 11165,
+                    "outflow": 14017
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 11165,
+                    "outflow": 14017
+                }
+            ]
+        },
+        {
+            "name": "Yamaguchi",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 5796,
+                    "outflow": 6726
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 5796,
+                    "outflow": 6726
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 5796,
+                    "outflow": 6726
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 5796,
+                    "outflow": 6726
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 5796,
+                    "outflow": 6726
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 5796,
+                    "outflow": 6726
+                }
+            ]
+        },
+        {
+            "name": "Tokushima",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 2355,
+                    "outflow": 2994
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 2355,
+                    "outflow": 2994
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 2355,
+                    "outflow": 2994
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 2355,
+                    "outflow": 2994
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 2355,
+                    "outflow": 2994
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 2355,
+                    "outflow": 2994
+                }
+            ]
+        },
+        {
+            "name": "Kagawa",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 4071,
+                    "outflow": 4767
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 4071,
+                    "outflow": 4767
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 4071,
+                    "outflow": 4767
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 4071,
+                    "outflow": 4767
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 4071,
+                    "outflow": 4767
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 4071,
+                    "outflow": 4767
+                }
+            ]
+        },
+        {
+            "name": "Ehime",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 4432,
+                    "outflow": 5627
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 4432,
+                    "outflow": 5627
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 4432,
+                    "outflow": 5627
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 4432,
+                    "outflow": 5627
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 4432,
+                    "outflow": 5627
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 4432,
+                    "outflow": 5627
+                }
+            ]
+        },
+        {
+            "name": "Kochi",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 2301,
+                    "outflow": 2759
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 2301,
+                    "outflow": 2759
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 2301,
+                    "outflow": 2759
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 2301,
+                    "outflow": 2759
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 2301,
+                    "outflow": 2759
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 2301,
+                    "outflow": 2759
+                }
+            ]
+        },
+        {
+            "name": "Fukuoka",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 26274,
+                    "outflow": 25176
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 26274,
+                    "outflow": 25176
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 26274,
+                    "outflow": 25176
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 26274,
+                    "outflow": 25176
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 26274,
+                    "outflow": 25176
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 26274,
+                    "outflow": 25176
+                }
+            ]
+        },
+        {
+            "name": "Saga",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 4065,
+                    "outflow": 4360
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 4065,
+                    "outflow": 4360
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 4065,
+                    "outflow": 4360
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 4065,
+                    "outflow": 4360
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 4065,
+                    "outflow": 4360
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 4065,
+                    "outflow": 4360
+                }
+            ]
+        },
+        {
+            "name": "Nagasaki",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 5463,
+                    "outflow": 7073
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 5463,
+                    "outflow": 7073
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 5463,
+                    "outflow": 7073
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 5463,
+                    "outflow": 7073
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 5463,
+                    "outflow": 7073
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 5463,
+                    "outflow": 7073
+                }
+            ]
+        },
+        {
+            "name": "Kumamoto",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 7594,
+                    "outflow": 7999
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 7594,
+                    "outflow": 7999
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 7594,
+                    "outflow": 7999
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 7594,
+                    "outflow": 7999
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 7594,
+                    "outflow": 7999
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 7594,
+                    "outflow": 7999
+                }
+            ]
+        },
+        {
+            "name": "Oita",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 4901,
+                    "outflow": 5680
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 4901,
+                    "outflow": 5680
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 4901,
+                    "outflow": 5680
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 4901,
+                    "outflow": 5680
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 4901,
+                    "outflow": 5680
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 4901,
+                    "outflow": 5680
+                }
+            ]
+        },
+        {
+            "name": "Miyazaki",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 4701,
+                    "outflow": 4988
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 4701,
+                    "outflow": 4988
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 4701,
+                    "outflow": 4988
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 4701,
+                    "outflow": 4988
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 4701,
+                    "outflow": 4988
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 4701,
+                    "outflow": 4988
+                }
+            ]
+        },
+        {
+            "name": "Kagoshima",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 6771,
+                    "outflow": 7459
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 6771,
+                    "outflow": 7459
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 6771,
+                    "outflow": 7459
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 6771,
+                    "outflow": 7459
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 6771,
+                    "outflow": 7459
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 6771,
+                    "outflow": 7459
+                }
+            ]
+        },
+        {
+            "name": "Okinawa",
+            "age_groups": [
+                {
+                    "age_range": "0-15",
+                    "inflow": 7212,
+                    "outflow": 7334
+                },
+                {
+                    "age_range": "15-30",
+                    "inflow": 7212,
+                    "outflow": 7334
+                },
+                {
+                    "age_range": "30-45",
+                    "inflow": 7212,
+                    "outflow": 7334
+                },
+                {
+                    "age_range": "45-60",
+                    "inflow": 7212,
+                    "outflow": 7334
+                },
+                {
+                    "age_range": "60-75",
+                    "inflow": 7212,
+                    "outflow": 7334
+                },
+                {
+                    "age_range": "The Rest",
+                    "inflow": 7212,
+                    "outflow": 7334
+                }
+            ]
+        }
+    ]
+}
