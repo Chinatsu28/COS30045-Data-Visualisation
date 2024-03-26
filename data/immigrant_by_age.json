@@ -5,36 +5,43 @@
             "age_groups": [
                 {
                     "age_range": "0-15",
-                    "inflow": 8897,
-                    "outflow": 9769
+                    "inflow": 7000,
+                    "outflow": 9000
                 },
                 {
                     "age_range": "15-30",
-                    "inflow": 8897,
-                    "outflow": 9769
+                    "inflow": 7500,
+                    "outflow": 8500
                 },
                 {
                     "age_range": "30-45",
-                    "inflow": 8897,
-                    "outflow": 9769
+                    "inflow": 8000,
+                    "outflow": 9500
                 },
                 {
                     "age_range": "45-60",
-                    "inflow": 8897,
-                    "outflow": 9769
+                    "inflow": 8500,
+                    "outflow": 9000
                 },
                 {
                     "age_range": "60-75",
-                    "inflow": 8897,
-                    "outflow": 9769
+                    "inflow": 9000,
+                    "outflow": 8500
                 },
                 {
-                    "age_range": "The Rest",
-                    "inflow": 8897,
-                    "outflow": 9769
+                    "age_range": "75-90",
+                    "inflow": 9500,
+                    "outflow": 8000
+                },
+                {
+                    "age_range": "90+",
+                    "inflow": 9500,
+                    "outflow": 8000
                 }
             ]
-        },
+        }
+        
+        ,
         {
             "name": "Aomori",
             "age_groups": [
