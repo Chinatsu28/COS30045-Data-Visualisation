@@ -1,3 +1,5 @@
+var immigrantSelected = null;
+
 function choropleth() {
   const originalWidth = 600;
   const originalHeight = 600;
@@ -13,16 +15,20 @@ function choropleth() {
     .attr("width", enlargedWidth)
     .attr("height", enlargedHeight);
 
-  // Load the GeoJSON data for Vietnam
-  d3.csv("../data/a001.csv").then(function (data) {
-    d3.json("../data/japan.json").then(function (json) {
-      // Create a projection for the map
-      const projection = d3
-        .geoMercator()
-        .fitSize([enlargedWidth, enlargedHeight], json);
+  // Load the GeoJSON data for Japan
+  d3.json("../data/japan.json").then(function (json) {
+    // Create a projection for the map
+    const projection = d3
+      .geoMercator()
+      .fitSize([enlargedWidth, enlargedHeight], json);
 
-      // Create a path generator
-      const path = d3.geoPath().projection(projection);
+    // Create a path generator
+    const path = d3.geoPath().projection(projection);
+
+    // Load the CSV data for prefecture inflows
+    d3.csv("../data/a001.csv").then(function (data) {
+      // Convert inflow data to map for easy lookup
+      const inflowMap = new Map(data.map(d => [d.Prefectures, +d.Out]));
 
       // Draw the map
       const features = svg
@@ -31,7 +37,15 @@ function choropleth() {
         .enter()
         .append("path")
         .attr("d", path)
-        .style("fill", "lightblue") // Color based on region mapping
+        .style("fill", function(d) {
+          // Get inflow for the current prefecture
+          const inflow = inflowMap.get(d.properties.nam);
+          // Use a color scale to map inflow values to colors
+          const colorScale = d3.scaleLinear()
+            .domain([0, d3.max(data, d => +d.In)]) // Adjust domain based on data
+            .range(["lightblue", "darkblue"]); // Adjust colors as needed
+          return inflow ? colorScale(inflow) : "lightblue"; // Default color if inflow data not found
+        })
         .style("stroke", "white")
         .style("stroke-width", 0.5)
         .on("mouseover", function (d) {
@@ -66,15 +80,17 @@ function choropleth() {
             .attr("text-anchor", "middle")
             .text(d.properties.nam);
 
-          d3.select(this).style("stroke", "black")
-            .style("stroke-width", 1)
+          d3.select(this).style("stroke", "black").style("stroke-width", 1);
         })
         .on("click", function (d) {
           selectedPrefecture = d.properties.nam;
           var prefecture = document.getElementById("prefecture");
           prefecture.innerHTML = selectedPrefecture;
 
-          createTornadoChart("../data/immigrant_by_age.json", selectedPrefecture);
+          createTornadoChart(
+            "../data/immigrant_by_age.json",
+            selectedPrefecture
+          );
         })
 
         .on("mouseout", function () {
@@ -84,8 +100,6 @@ function choropleth() {
           d3.select(this).style("stroke", "none");
         });
     });
-
-
   });
 }
 
@@ -163,7 +177,7 @@ function createTornadoChart(filename, selectedPrefecture) {
       .style("fill", "steelblue")
       .transition()
       .duration(1000) // Transition duration
-      .attr("width", (d) => Math.abs(xScale(d.inflow) - xScale(0) - 50)); // Expand width
+      .attr("width", (d) => Math.abs(xScale(d.inflow) - xScale(0) - 50));
 
     // Create bars for outflow
     svg
@@ -179,7 +193,8 @@ function createTornadoChart(filename, selectedPrefecture) {
       .style("fill", "orange")
       .transition()
       .duration(1000) // Transition duration
-      .attr("width", (d) => Math.abs(xScale(d.outflow) - xScale(0))); // Expand width
+      .attr("width", (d) => Math.abs(xScale(d.outflow) - xScale(0)));
+       // Expand width
 
     // Add x-axis
     svg
@@ -234,7 +249,5 @@ function createTornadoChart(filename, selectedPrefecture) {
     legend.append("text").attr("x", 30).attr("y", 40).text("Outflow");
   });
 }
-
-
 
 choropleth();
