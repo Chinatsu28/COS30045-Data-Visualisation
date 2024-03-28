@@ -66,7 +66,8 @@ function choropleth() {
             .attr("text-anchor", "middle")
             .text(d.properties.nam);
 
-          d3.select(this).style("fill", "orange");
+          d3.select(this).style("stroke", "black")
+            .style("stroke-width", 1)
         })
         .on("click", function (d) {
           selectedPrefecture = d.properties.nam;
@@ -80,7 +81,7 @@ function choropleth() {
           // Remove the tooltip box on mouseout
           svg.selectAll(".tooltip-box").remove();
           svg.selectAll(".tooltip-text").remove();
-          d3.select(this).style("fill", "lightblue");
+          d3.select(this).style("stroke", "none");
         });
     });
 
