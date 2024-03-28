@@ -72,6 +72,8 @@ function choropleth() {
           selectedPrefecture = d.properties.nam;
           var prefecture = document.getElementById("prefecture");
           prefecture.innerHTML = selectedPrefecture;
+
+          createTornadoChart("../data/immigrant_by_age.json", selectedPrefecture);
         })
 
         .on("mouseout", function () {
@@ -82,11 +84,14 @@ function choropleth() {
         });
     });
 
-    createTornadoChart("../data/immigrant_by_age.json");
+
   });
 }
 
-function createTornadoChart(filename) {
+function createTornadoChart(filename, selectedPrefecture) {
+  // Clear existing chart
+  d3.select("#tornado_chart").html("");
+
   d3.json(filename).then(function (data) {
     console.log(data);
     if (!data || !data.prefectures || !Array.isArray(data.prefectures)) {
@@ -96,16 +101,16 @@ function createTornadoChart(filename) {
       return;
     }
 
-    let hokkaidoData = data.prefectures.find(
-      (prefecture) => prefecture.name === "Hokkaido"
+    let selectedData = data.prefectures.find(
+      (prefecture) => prefecture.name === selectedPrefecture
     );
 
-    if (!hokkaidoData) {
-      console.log("Data for Hokkaido not found.");
+    if (!selectedData) {
+      console.log("Data for the selected prefecture not found.");
       return;
     }
 
-    const ageGroups = hokkaidoData.age_groups;
+    const ageGroups = selectedData.age_groups;
 
     // Select the container for the tornado chart
     const tornadoChartContainer = d3.select("#tornado_chart");
@@ -135,15 +140,14 @@ function createTornadoChart(filename) {
     const xScale = d3
       .scaleLinear()
       .domain([-maxAbsValue, maxAbsValue])
-      .range([50, width -50]);
+      .range([50, width - 50]);
 
     const yScale = d3
       .scaleBand()
       .domain(ageGroups.map((d) => d.age_range))
-      .range([20, height -20])
+      .range([20, height - 20])
       .padding(0.1);
 
-    // Create bars for inflow
     // Create bars for inflow
     svg
       .selectAll(".inflow-bar")
@@ -153,9 +157,12 @@ function createTornadoChart(filename) {
       .attr("class", "inflow-bar")
       .attr("x", (d) => xScale(0)) // Start from 0 for inflow
       .attr("y", (d) => yScale(d.age_range))
-      .attr("width", (d) => Math.abs(xScale(d.inflow) - xScale(0) - 50))
+      .attr("width", 0) // Initially set width to 0 for animation
       .attr("height", yScale.bandwidth())
-      .style("fill", "steelblue");
+      .style("fill", "steelblue")
+      .transition()
+      .duration(1000) // Transition duration
+      .attr("width", (d) => Math.abs(xScale(d.inflow) - xScale(0) - 50)); // Expand width
 
     // Create bars for outflow
     svg
@@ -166,9 +173,12 @@ function createTornadoChart(filename) {
       .attr("class", "outflow-bar")
       .attr("x", (d) => xScale(-Math.abs(d.outflow))) // Start from 0 for outflow
       .attr("y", (d) => yScale(d.age_range))
-      .attr("width", (d) => Math.abs(xScale(d.outflow) - xScale(0)))
+      .attr("width", 0) // Initially set width to 0 for animation
       .attr("height", yScale.bandwidth())
-      .style("fill", "orange");
+      .style("fill", "orange")
+      .transition()
+      .duration(1000) // Transition duration
+      .attr("width", (d) => Math.abs(xScale(d.outflow) - xScale(0))); // Expand width
 
     // Add x-axis
     svg
@@ -223,5 +233,7 @@ function createTornadoChart(filename) {
     legend.append("text").attr("x", 30).attr("y", 40).text("Outflow");
   });
 }
+
+
 
 choropleth();
