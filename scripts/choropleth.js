@@ -2,7 +2,7 @@ var immigrantSelected = null;
 var color = null;
 var colorRange = {
   inflow: ["lightblue", "darkblue"], // Define color range for inflow
-  outflow: ["rgb(255,180,180)", "#ce0000"] // Define color range for outflow
+  outflow: ["rgb(255,180,180)", "#ce0000"], // Define color range for outflow
 };
 
 function choropleth(color) {
@@ -55,7 +55,7 @@ function choropleth(color) {
             } else {
               return "lightblue";
             }
-          } else if ( color == "outflow") {
+          } else if (color == "outflow") {
             const outflow = outflowMap.get(d.properties.nam);
             if (outflow !== undefined) {
               const colorScale = d3
@@ -67,8 +67,8 @@ function choropleth(color) {
               return "rgb(255,180,180)";
             }
           } else {
-          return "lightblue";
-          };
+            return "lightblue";
+          }
         }) // Default color if inflow data not found
         .style("stroke", "white")
         .style("stroke-width", 0.5)
@@ -124,7 +124,6 @@ function choropleth(color) {
           svg.selectAll(".tooltip-text").remove();
           d3.select(this).style("stroke", "none");
         });
-
     });
   });
 }
@@ -226,6 +225,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .on("click", function (d) {
         color = "outflow";
         d3.select("#choropleth svg").remove();
+
         choropleth(color);
       })
       .transition()
@@ -286,6 +286,5 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
     legend.append("text").attr("x", 30).attr("y", 40).text("Outflow");
   });
 }
-
 
 choropleth();
