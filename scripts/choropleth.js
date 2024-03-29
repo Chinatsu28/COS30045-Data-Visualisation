@@ -1,6 +1,11 @@
 var immigrantSelected = null;
+var color = null;
+var colorRange = {
+  inflow: ["lightblue", "darkblue"], // Define color range for inflow
+  outflow: ["rgb(255,180,180)", "#ce0000"] // Define color range for outflow
+};
 
-function choropleth() {
+function choropleth(color) {
   const originalWidth = 600;
   const originalHeight = 600;
   var selectedPrefecture = null;
@@ -28,7 +33,8 @@ function choropleth() {
     // Load the CSV data for prefecture inflows
     d3.csv("../data/a001.csv").then(function (data) {
       // Convert inflow data to map for easy lookup
-      const inflowMap = new Map(data.map(d => [d.Prefectures, +d.Out]));
+      let inflowMap = new Map(data.map((d) => [d.Prefectures, +d.In]));
+      let outflowMap = new Map(data.map((d) => [d.Prefectures, +d.Out]));
 
       // Draw the map
       const features = svg
@@ -37,15 +43,33 @@ function choropleth() {
         .enter()
         .append("path")
         .attr("d", path)
-        .style("fill", function(d) {
-          // Get inflow for the current prefecture
-          const inflow = inflowMap.get(d.properties.nam);
-          // Use a color scale to map inflow values to colors
-          const colorScale = d3.scaleLinear()
-            .domain([0, d3.max(data, d => +d.In)]) // Adjust domain based on data
-            .range(["lightblue", "darkblue"]); // Adjust colors as needed
-          return inflow ? colorScale(inflow) : "lightblue"; // Default color if inflow data not found
-        })
+        .style("fill", function (d) {
+          if (color == "inflow") {
+            const inflow = inflowMap.get(d.properties.nam);
+            if (inflow !== undefined) {
+              const colorScale = d3
+                .scaleLinear()
+                .domain([0, d3.max(data, (d) => +d.In)])
+                .range(colorRange.inflow); // Use color range for inflow
+              return colorScale(inflow);
+            } else {
+              return "lightblue";
+            }
+          } else if ( color == "outflow") {
+            const outflow = outflowMap.get(d.properties.nam);
+            if (outflow !== undefined) {
+              const colorScale = d3
+                .scaleLinear()
+                .domain([0, d3.max(data, (d) => +d.Out)])
+                .range(colorRange.outflow); // Use color range for outflow
+              return colorScale(outflow);
+            } else {
+              return "rgb(255,180,180)";
+            }
+          } else {
+          return "lightblue";
+          };
+        }) // Default color if inflow data not found
         .style("stroke", "white")
         .style("stroke-width", 0.5)
         .on("mouseover", function (d) {
@@ -89,7 +113,8 @@ function choropleth() {
 
           createTornadoChart(
             "../data/immigrant_by_age.json",
-            selectedPrefecture
+            selectedPrefecture,
+            colorRange
           );
         })
 
@@ -99,11 +124,12 @@ function choropleth() {
           svg.selectAll(".tooltip-text").remove();
           d3.select(this).style("stroke", "none");
         });
+
     });
   });
 }
 
-function createTornadoChart(filename, selectedPrefecture) {
+function createTornadoChart(filename, selectedPrefecture, colorRange) {
   // Clear existing chart
   d3.select("#tornado_chart").html("");
 
@@ -136,7 +162,7 @@ function createTornadoChart(filename, selectedPrefecture) {
       tornadoChartContainer.node().getBoundingClientRect().width -
       margin.left -
       margin.right;
-    const height = 400 - margin.top - margin.bottom;
+    const height = 500 - margin.top - margin.bottom;
 
     // Create SVG element for the chart
     const svg = tornadoChartContainer
@@ -164,7 +190,7 @@ function createTornadoChart(filename, selectedPrefecture) {
       .padding(0.1);
 
     // Create bars for inflow
-    svg
+    const inflowBars = svg
       .selectAll(".inflow-bar")
       .data(ageGroups)
       .enter()
@@ -174,13 +200,19 @@ function createTornadoChart(filename, selectedPrefecture) {
       .attr("y", (d) => yScale(d.age_range))
       .attr("width", 0) // Initially set width to 0 for animation
       .attr("height", yScale.bandwidth())
-      .style("fill", "steelblue")
+      .style("fill", "cornflowerblue")
+      .on("click", function (d) {
+        color = "inflow";
+        d3.select("#choropleth svg").remove();
+        choropleth(color);
+      })
       .transition()
       .duration(1000) // Transition duration
-      .attr("width", (d) => Math.abs(xScale(d.inflow) - xScale(0) - 50));
+      .attr("width", (d) => Math.abs(xScale(d.inflow) - xScale(0) - 50))
+      .attr("prefecture", (d) => d.prefecture); // Add prefecture attribute
 
     // Create bars for outflow
-    svg
+    const outflowBars = svg
       .selectAll(".outflow-bar")
       .data(ageGroups)
       .enter()
@@ -190,11 +222,16 @@ function createTornadoChart(filename, selectedPrefecture) {
       .attr("y", (d) => yScale(d.age_range))
       .attr("width", 0) // Initially set width to 0 for animation
       .attr("height", yScale.bandwidth())
-      .style("fill", "orange")
+      .style("fill", "#e62020")
+      .on("click", function (d) {
+        color = "outflow";
+        d3.select("#choropleth svg").remove();
+        choropleth(color);
+      })
       .transition()
       .duration(1000) // Transition duration
-      .attr("width", (d) => Math.abs(xScale(d.outflow) - xScale(0)));
-       // Expand width
+      .attr("width", (d) => Math.abs(xScale(d.outflow) - xScale(0)))
+      .attr("prefecture", (d) => d.prefecture); // Add prefecture attribute
 
     // Add x-axis
     svg
@@ -235,7 +272,7 @@ function createTornadoChart(filename, selectedPrefecture) {
       .append("rect")
       .attr("width", 20)
       .attr("height", 20)
-      .attr("fill", "steelblue");
+      .attr("fill", "cornflowerblue");
 
     legend.append("text").attr("x", 30).attr("y", 10).text("Inflow");
 
@@ -244,10 +281,11 @@ function createTornadoChart(filename, selectedPrefecture) {
       .attr("width", 20)
       .attr("height", 20)
       .attr("y", 30)
-      .attr("fill", "orange");
+      .attr("fill", "#e62020");
 
     legend.append("text").attr("x", 30).attr("y", 40).text("Outflow");
   });
 }
+
 
 choropleth();
