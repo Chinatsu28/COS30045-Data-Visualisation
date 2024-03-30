@@ -1,6 +1,6 @@
 function init(data) {
    var w = 600;
-   var h = 600;
+   var h = 450;
    var padding = 55;
    var outerRadius = w / 3;
    var innerRadius = w / 6;

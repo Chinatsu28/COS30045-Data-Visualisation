@@ -132,28 +132,39 @@ function choropleth(color) {
           const mouseY = d3.event.pageY - svgBounds.top;
 
           const tooltipX = mouseX - tooltipWidth / 2;
-          const tooltipY = mouseY - tooltipHeight - 10; // Adjust for a small gap
+          const tooltipY = mouseY - tooltipHeight - 350; // Adjust for a small gap
 
           // Add a tooltip box
           svg
             .append("rect")
             .attr("class", "tooltip-box")
-            .attr("x", tooltipX)
+            .attr("x", tooltipX - 25)
             .attr("y", tooltipY)
-            .attr("width", tooltipWidth + 10)
+            .attr("width", tooltipWidth + 50)
             .attr("height", tooltipHeight)
-            .attr("fill", "rgba(62,197,255,0.8)")
-            .style("border-radius", "10px"); // Orange background color
+            .attr("fill", "#ffdede")
+            .style("border-radius", "10px")
+            .style("stroke", "1px solid black");// Orange background color
 
           // Add text to the tooltip box
           svg
-            .append("text")
-            .attr("class", "tooltip-text")
-            .attr("x", tooltipX + tooltipWidth / 2)
-            .attr("y", tooltipY + tooltipHeight / 2)
-            .attr("dy", "0.35em")
-            .attr("text-anchor", "middle")
-            .text(d.properties.nam);
+        .append("text")
+        .attr("class", "tooltip-text")
+        .attr("x", tooltipX + tooltipWidth / 2)
+        .attr("y", tooltipY + tooltipHeight / 2)
+        .attr("dy", "0.35em")
+        .attr("text-anchor", "middle")
+        .text(function () {
+            if (color === "inflow") {
+                const inflow = inflowMap.get(d.properties.nam);
+                return `${d.properties.nam}: ${inflow !== undefined ? inflow : 'N/A'}`;
+            } else if (color === "outflow") {
+                const outflow = outflowMap.get(d.properties.nam);
+                return `${d.properties.nam}: ${outflow !== undefined ? outflow : 'N/A'}`;
+            } else {
+                return `${d.properties.nam}`;
+            }
+        });
 
             d3.select(this).style("stroke", "black")
             .style("stroke-width", 0.7)
@@ -260,7 +271,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
     const xScale = d3
       .scaleLinear()
       .domain([-maxAbsValue, maxAbsValue])
-      .range([50, width - 50]);
+      .range([100, width - 100]);
 
     const yScale = d3
       .scaleBand()
@@ -320,20 +331,24 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .call(d3.axisBottom(xScale));
 
     // Add y-axis
-    svg.append("g").attr("class", "y-axis").call(d3.axisLeft(yScale));
+    svg
+      .append("g")
+      .attr("class", "y-axis")
+      .attr("transform", `translate(50 ,0)`)
+      .call(d3.axisLeft(yScale));
 
     // Add labels
     svg
       .append("text")
       .attr("x", width / 2)
-      .attr("y", -margin.top / 2)
+      .attr("y", -margin.top / 2 + 10)
       .attr("text-anchor", "middle")
       .text("Population Change");
 
     svg
       .append("text")
-      .attr("x", -margin.left)
-      .attr("y", -margin.top / 2)
+      .attr("x", -margin.left - 200)
+      .attr("y", -margin.top / 2 )
       .attr("text-anchor", "middle")
       .attr("transform", "rotate(-90)")
       .text("Age Range");
@@ -351,6 +366,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .append("rect")
       .attr("width", 20)
       .attr("height", 20)
+      
       .attr("fill", "cornflowerblue");
 
     legend.append("text").attr("x", 30).attr("y", 10).text("Inflow");
