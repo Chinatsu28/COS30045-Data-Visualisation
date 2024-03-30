@@ -5,6 +5,51 @@ var colorRange = {
   outflow: ["rgb(255,180,180)", "#ce0000"], // Define color range for outflow
 };
 
+function treemap(dataset) {
+  // Fetch data from JSON file
+  d3.json(dataset).then(function(data) {
+    // Create the tree map
+    var width = 1000;
+    var height = 500;
+    d3.select("#treeMap svg").remove();
+    var svg1 = d3
+      .select("#treeMap")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+    var treemap = d3.treemap().size([width, height]).padding(1);
+
+    var root = d3.hierarchy({ children: data.data }).sum((d) => d.Total);
+
+    treemap(root);
+
+    var cell = svg1
+      .selectAll("g")
+      .data(root.leaves())
+      .enter()
+      .append("g")
+      .attr("transform", (d) => `translate(${d.x0},${d.y0})`);
+
+    cell
+      .append("rect")
+      .attr("width", (d) => d.x1 - d.x0)
+      .attr("height", (d) => d.y1 - d.y0)
+      .attr("fill", (d) => color(d.data.Continent));
+
+    cell
+      .append("text")
+      .attr("x", 5)
+      .attr("y", 15)
+      .attr("fill", "white")
+      .text((d) => `${d.data.Percentage}`);
+  });
+}
+
+  
+
 function choropleth(color) {
   const originalWidth = 600;
   const originalHeight = 600;
@@ -14,6 +59,7 @@ function choropleth(color) {
   const enlargedHeight = originalHeight * 1.3;
   var selected = null;
   // Append an SVG container to the map-container div
+  d3.select("#choropleth svg").remove();
   const svg = d3
     .select("#choropleth")
     .append("svg")
@@ -202,8 +248,8 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .style("fill", "cornflowerblue")
       .on("click", function (d) {
         color = "inflow";
-        d3.select("#choropleth svg").remove();
         choropleth(color);
+        treemap("../data/immigrant_by_nationality.json");
       })
       .transition()
       .duration(1000) // Transition duration
@@ -224,8 +270,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .style("fill", "#e62020")
       .on("click", function (d) {
         color = "outflow";
-        d3.select("#choropleth svg").remove();
-
+        treemap("../data/emigrant_by_nationality.json");
         choropleth(color);
       })
       .transition()

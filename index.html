@@ -1,129 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Japanese migration analysis visualization"/>
-    <meta name="keywords" content="Japanese migration, migration analysis, Japan, migration visualization"/>
-    <meta name="author" content="Thanh An Ho, Nam Khang Dang" />
-    <title>Japanese Migration Analysis</title>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <link rel="stylesheet" href="styles/bootstrap.css" />
-    <link rel="stylesheet" href="styles/style.css" />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.html">Japanese migration</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="#"
-            >Home<span class="sr-only"></span></a
-          >
-          <a class="nav-item nav-link" href="choropleth.html">Choropleth Analysis</a>
-          
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Japanese migration analysis visualization"/>
+  <meta name="keywords" content="Japanese migration, migration analysis, Japan, migration visualization"/>
+  <meta name="author" content="Thanh An Ho, Nam Khang Dang" />
+  <title>Japanese Migration Analysis</title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <link rel="stylesheet" href="styles/bootstrap.css" />
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">Japanese migration</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">Home<span class="sr-only"></span></a>
+        <a class="nav-item nav-link" href="choropleth.html">Choropleth Analysis</a>
       </div>
-    </nav>
-    <div class="body d-flex">
-      <section class="col-6">
-        <figure>
-          <div id="InOutflow"></div>
-          <figcaption class="d-flex justify-content-center">
-            <p>
-              Fig 1:Number of Inflows and Outflows migration in Japan from 2000 to 2021
-            </p>
-        </figure>
-      </section>
-
-      <section class="about col-6 d-flex flex-column align-content-center p-5">
-        <h1>Japanese migration analysis visualization</h1>
-        <p>
-          Migration patterns in Japan are a crucial gauge of societal and
-          economic dynamics. Through a visual representation highlighting color
-          saturation, users can easily grasp the intensity of migration in each
-          prefecture. The varying hues indicate migration levels, offering a
-          clear overview of population movement. This accessible visualization
-          aims to inform decision-making by providing a refined understanding of
-          Japan's evolving demographic landscape.
-        </p>
-        <div id="firstLegend"></div>
-
-        <div class="legendBox" class="col border border-primary p-5">
-          <p>On the left is a bar chart that shows the number of people migrated to Japan and the line graph indicates the number of people migrated out of Japan from 2000 to 2021.
+    </div>
+  </nav>
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'barChart')">Inflows and Outflows</button>
+    <button class="tablinks" onclick="openCity(event, 'pieChart')">Number of foreign residents</button>
+    <button class="tablinks" onclick="openCity(event, 'treeMap')">Migration Overview</button>
+  </div>
+  <div class=" d-flex tabcontent" id="barChart">
+    <section class="col-6">
+      <figure>
+        <div id="InOutflow"></div>
+        <figcaption class="d-flex justify-content-center">
+          <p>
+            Fig 1:Number of Inflows and Outflows migration in Japan from 2000 to 2021
           </p>
-          <p><i>Hover over a bar or a dot to see the data for the whole year.</i></p>
-          <span id="captionBox" class="col"></span>
-        </div>
-      </section>
-    </div>
-    <div class="body d-flex">
-      
+      </figure>
+    </section>
 
-      
+    <section class="about col-6 d-flex flex-column align-content-center p-5">
+      <h1>Japanese migration analysis visualization</h1>
+      <p>
+        Migration patterns in Japan are a crucial gauge of societal and
+        economic dynamics. Through a visual representation highlighting color
+        saturation, users can easily grasp the intensity of migration in each
+        prefecture. The varying hues indicate migration levels, offering a
+        clear overview of population movement. This accessible visualization
+        aims to inform decision-making by providing a refined understanding of
+        Japan's evolving demographic landscape.
+      </p>
+      <div id="firstLegend"></div>
 
-      <section class="col-6">
-        <figure>
-          <div id="proportion"></div>
-          <figcaption class="d-flex justify-content-center">
-            <p>
-              Fig 1:Number of Inflows and Outflows migration in Japan from 2000 to 2021
-            </p>
-        </figure>
-      </section>
-      <section class="about col-6 d-flex flex-column align-content-center p-5">
-        <h1>Number of foreign resident by nationality</h1>
-        <p>
-          M
+      <div class="legendBox" class="col border border-primary p-5">
+        <p>On the left is a bar chart that shows the number of people migrated to Japan and the line graph indicates the number of people migrated out of Japan from 2000 to 2021.
         </p>
-        <div id="firstLegend"></div>
-
-        <div class="legendBox" class="col border border-primary p-5">
-          <p>Number of foreign resident by nationality</p>
-          <p><i>Hover over a bar or a dot to see the data for the whole year.</i></p>
-          <div>
-            <button id="pie2021" class="btn btn-primary">
-              2021
-            </button>
-            <button id="pie2020" class="btn btn-primary">
-              2020
-            </button>
-            <button id="pie2019" class="btn btn-primary">
-              2019
-            </button>
-            <button id="pie2018" class="btn btn-primary">
-              2018
-            </button>
-            <button id="pie2017" class="btn btn-primary">
-              2017
-            </button>
-
-            
-          </div>
-          
-        </div>
-      </section>
-    </div>
-    
-    <footer class="bg-body-tertiary text-center text-lg-start">
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2024 Copyright:
-        <span class="text-body" href="https://mdbootstrap.com/">Ho Thanh An, Dang Nam Khanh</span>
+        <p><i>Hover over a bar or a dot to see the data for the whole year.</i></p>
+        <span id="captionBox" class="col"></span>
       </div>
-      <!-- Copyright -->
-    </footer>
-    <script src="scripts/choropleth.js"></script>
-    <script src="scripts/proportion.js"></script>
-  </body>
+    </section>
+  </div>
+  <div class=" d-flex tabcontent" id="pieChart" style="opacity: 1;"> 
+    <section class="col-6">
+      <figure>
+        <div id="proportion"></div>
+        <figcaption class="d-flex justify-content-center">
+          <p>
+            Fig 1:Number of Inflows and Outflows migration in Japan from 2000 to 2021
+          </p>
+      </figure>
+    </section>
+    <section class="about col-6 d-flex flex-column align-content-center p-5">
+      <h1>Number of foreign resident by nationality</h1>
+      <p>
+        M
+      </p>
+      <div id="firstLegend"></div>
+
+      <div class="legendBox" class="col border border-primary p-5">
+        <p>Number of foreign resident by nationality</p>
+        <p><i>Hover over a bar or a dot to see the data for the whole year.</i></p>
+        <div>
+          <button id="pie2021" class="btn btn-primary">
+            2021
+          </button>
+          <button id="pie2020" class="btn btn-primary">
+            2020
+          </button>
+          <button id="pie2019" class="btn btn-primary">
+            2019
+          </button>
+          <button id="pie2018" class="btn btn-primary">
+            2018
+          </button>
+          <button id="pie2017" class="btn btn-primary">
+            2017
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class=" d-flex">
+    <section class="col">
+      <figure>
+        <div id=""></div>
+        <figcaption class="d-flex justify-content-center">
+          <p>
+            Fig 1:Number of Inflows and Outflows migration in Japan from 2000 to 2021
+          </p>
+      </figure>
+    </section>
+  </div>
+  <footer class="bg-body-tertiary text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2024 Copyright:
+      <span class="text-body" href="https://mdbootstrap.com/">Ho Thanh An, Dang Nam Khanh</span>
+    </div>
+  </footer>
+  <script src="scripts/population.js"></script>
+  <script src="scripts/proportion.js"></script>
+  <script src="scripts/treemap.js"></script>
+  
+</body>
 </html>
