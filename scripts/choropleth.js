@@ -150,11 +150,11 @@ function choropleth(color) {
           this.parentNode.appendChild(this);
           // Calculate the position for the tooltip
           var svgBounds = svg.node().getBoundingClientRect();
-          const mouseX = d3.event.pageX - svgBounds.left;
-          const mouseY = d3.event.pageY - svgBounds.top;
+          const mouseX = d3.event.pageX;
+          const mouseY = d3.event.pageY - svgBounds.top - window.scrollY - 20;
 
-          const tooltipX = mouseX - tooltipWidth / 2;
-          const tooltipY = mouseY - tooltipHeight - 350; // Adjust for a small gap
+          const tooltipX = mouseX  - tooltipWidth / 2;
+          const tooltipY = mouseY  - tooltipHeight - 10// Adjust for a small gap
 
           // Add a tooltip box
           svg
@@ -218,8 +218,6 @@ function choropleth(color) {
             d3.select(this).style("stroke-width", 0.5)
         .style("stroke-linejoin", "round") // Add this line
                 .style("stroke-linecap", "round"); // Add this line
-
-
         });
         d3.select("#clear").on("click", function () {
             clickOutsideMap = false;
@@ -281,7 +279,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`);
+      .attr("transform", `translate(${margin.left},${margin.top})`)
 
     // Calculate the maximum absolute value across inflow and outflow data points
     const maxAbsValue = d3.max(ageGroups, (d) =>
@@ -320,7 +318,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .transition()
       .duration(1000) // Transition duration
       .attr("width", (d) => Math.abs(xScale(d.inflow) - xScale(0) - 50))
-      .attr("prefecture", (d) => d.prefecture); // Add prefecture attribute
+      .attr("prefecture", (d) => d.prefecture) // Add prefecture attribute
 
     // Create bars for outflow
     const outflowBars = svg
@@ -339,11 +337,11 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
         treemap("../data/emigrant_by_nationality.json");
         choropleth(color);
       })
+
       .transition()
       .duration(1000) // Transition duration
       .attr("width", (d) => Math.abs(xScale(d.outflow) - xScale(0)))
       .attr("prefecture", (d) => d.prefecture); // Add prefecture attribute
-
     // Add x-axis
     svg
       .append("g")
@@ -387,19 +385,19 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .append("rect")
       .attr("width", 20)
       .attr("height", 20)
-
+        .attr("y", -50)
       .attr("fill", "cornflowerblue");
 
-    legend.append("text").attr("x", 30).attr("y", 10).text("Inflow");
+    legend.append("text").attr("x", -50).attr("y", -40).text("Inflow");
 
     legend
       .append("rect")
       .attr("width", 20)
       .attr("height", 20)
-      .attr("y", 30)
+      .attr("y", -20)
       .attr("fill", "#e62020");
 
-    legend.append("text").attr("x", 30).attr("y", 40).text("Outflow");
+    legend.append("text").attr("x", -50).attr("y", -10).text("Outflow");
   });
 }
 
