@@ -10,10 +10,10 @@ function treemap(dataset) {
   // Fetch data from JSON file
   d3.json(dataset).then(function(data) {
     // Create the tree map
-    var width = 1000;
-    var height = 500;
+    var width = 1000; // Reduce the width
+    var height = 400;
     d3.select("#treeMap svg").remove();
-    var svg1 = d3
+    var svg = d3
       .select("#treeMap")
       .append("svg")
       .attr("width", width)
@@ -21,13 +21,13 @@ function treemap(dataset) {
 
     var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-    var treemap = d3.treemap().size([width, height]).padding(1);
+    var treemap = d3.treemap().size([width * 0.7, height]).padding(1); // Adjust size
 
     var root = d3.hierarchy({ children: data.data }).sum((d) => d.Total);
 
     treemap(root);
 
-    var cell = svg1
+    var cell = svg
       .selectAll("g")
       .data(root.leaves())
       .enter()
@@ -46,8 +46,30 @@ function treemap(dataset) {
       .attr("y", 15)
       .attr("fill", "white")
       .text((d) => `${d.data.Percentage}`);
+
+    // Legend
+    var legend = svg.selectAll(".legend")
+      .data(color.domain())
+      .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(" + (width * 0.8) + "," + (i * 20 + 20) + ")"; }); // Adjust position
+
+    legend.append("rect")
+      .attr("x", 0)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+      legend.append("text")
+      .attr("x", 22) // Position text to the right of the rect
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "start") // Align text to the start of the rect
+      .text(function(d) { return d; });
   });
 }
+
+
 
   
 
@@ -173,8 +195,6 @@ function choropleth(color) {
         })
         .on("click", function (d) {
           selectedPrefecture = d.properties.nam;
-          var prefecture = document.getElementById("prefecture");
-          prefecture.innerHTML = selectedPrefecture;
 
           createTornadoChart(
             "../data/immigrant_by_age.json",
@@ -186,6 +206,7 @@ function choropleth(color) {
                         d3.select(this).style("opacity", 1);
                         d3.select(this).style("z-index", "10")
                     console.log(clickOutsideMap);
+
         })
 
         .on("mouseout", function () {
@@ -366,7 +387,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .append("rect")
       .attr("width", 20)
       .attr("height", 20)
-      
+
       .attr("fill", "cornflowerblue");
 
     legend.append("text").attr("x", 30).attr("y", 10).text("Inflow");
