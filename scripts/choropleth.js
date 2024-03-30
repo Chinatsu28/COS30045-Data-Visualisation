@@ -191,6 +191,8 @@ function choropleth(color) {
         });
         d3.select("#clear").on("click", function () {
             clickOutsideMap = false;
+            color=null;
+            choropleth();
             features.style("opacity", 0.7);
         });
         function zoomed(){
