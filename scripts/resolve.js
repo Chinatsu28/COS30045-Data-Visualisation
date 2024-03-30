@@ -1,4 +1,4 @@
-
+<<<<<<< chinatsu
 var immigrantSelected = null;
 var color = null;
 var colorRange = {
@@ -127,9 +127,8 @@ function choropleth(color) {
           const tooltipHeight = 40; // Set the height of the tooltip box
           this.parentNode.appendChild(this);
           // Calculate the position for the tooltip
-          var svgBounds = svg.node().getBoundingClientRect();
-          const mouseX = d3.event.pageX - svgBounds.left;
-          const mouseY = d3.event.pageY - svgBounds.top;
+          const mouseX = d3.event.pageX;
+          const mouseY = d3.event.pageY;
 
           const tooltipX = mouseX - tooltipWidth / 2;
           const tooltipY = mouseY - tooltipHeight - 10; // Adjust for a small gap
