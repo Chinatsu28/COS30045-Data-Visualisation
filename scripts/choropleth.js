@@ -1,3 +1,4 @@
+
 var immigrantSelected = null;
 var color = null;
 var colorRange = {
@@ -51,6 +52,7 @@ function treemap(dataset) {
   
 
 function choropleth(color) {
+    var clickOutsideMap;
   const originalWidth = 600;
   const originalHeight = 600;
   var selectedPrefecture = null;
@@ -118,10 +120,12 @@ function choropleth(color) {
         }) // Default color if inflow data not found
         .style("stroke", "white")
         .style("stroke-width", 0.5)
+        .style("stroke-linejoin", "round") // Add this line
+        .style("stroke-linecap", "round") // Add this line
         .on("mouseover", function (d) {
           const tooltipWidth = 100; // Set the width of the tooltip box
           const tooltipHeight = 40; // Set the height of the tooltip box
-
+          this.parentNode.appendChild(this);
           // Calculate the position for the tooltip
           const mouseX = d3.event.pageX;
           const mouseY = d3.event.pageY;
@@ -150,7 +154,10 @@ function choropleth(color) {
             .attr("text-anchor", "middle")
             .text(d.properties.nam);
 
-          d3.select(this).style("stroke", "black").style("stroke-width", 1);
+            d3.select(this).style("stroke", "black")
+            .style("stroke-width", 0.7)
+            .style("stroke-linejoin", "round") // Add this line
+            .style("stroke-linecap", "round"); // Add this line
         })
         .on("click", function (d) {
           selectedPrefecture = d.properties.nam;
@@ -162,14 +169,38 @@ function choropleth(color) {
             selectedPrefecture,
             colorRange
           );
+          clickOutsideMap = !clickOutsideMap;
+                        features.style("opacity", 0.4);
+                        d3.select(this).style("opacity", 1);
+                        d3.select(this).style("z-index", "10")
+                    console.log(clickOutsideMap);
         })
 
         .on("mouseout", function () {
-          // Remove the tooltip box on mouseout
-          svg.selectAll(".tooltip-box").remove();
-          svg.selectAll(".tooltip-text").remove();
-          d3.select(this).style("stroke", "none");
+            // Remove the tooltip box on mouseout
+            svg.selectAll(".tooltip-box").remove();
+            svg.selectAll(".tooltip-text").remove();
+            d3.select(this).style("stroke", "white");
+            d3.select(this).style("z-index", "0")
+            d3.select(this).style("stroke-width", 0.5)
+        .style("stroke-linejoin", "round") // Add this line
+                .style("stroke-linecap", "round"); // Add this line
+
+
         });
+        d3.select("#clear").on("click", function () {
+            clickOutsideMap = false;
+            features.style("opacity", 0.7);
+        });
+        function zoomed(){
+            const {transform} = d3.event;
+            features.attr("transform", transform);
+        }
+        const zoom = d3.zoom()
+            .scaleExtent([1, 8])
+            .on("zoom", zoomed);
+
+        svg.call(zoom);
     });
   });
 }
@@ -333,3 +364,4 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
 }
 
 choropleth();
+
