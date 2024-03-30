@@ -1,0 +1,20 @@
+{
+    "data": [
+      { "Country": "U.S.A.", "Continent": "North America", "Total": 429889, "Percentage": 17.3 },
+      { "Country": "China", "Continent": "Asia", "Total": 107715, "Percentage": 4.3 },
+      { "Country": "Australia", "Continent": "Australia", "Total": 93451, "Percentage": 3.8 },
+      { "Country": "Thailand", "Continent": "Asia", "Total": 82574, "Percentage": 3.3 },
+      { "Country": "Canada", "Continent": "North America", "Total": 70892, "Percentage": 2.9 },
+      { "Country": "United Kingdom", "Continent": "Europe", "Total": 63653, "Percentage": 2.6 },
+      { "Country": "Brazil", "Continent": "South America", "Total": 48703, "Percentage": 2.0 },
+      { "Country": "Germany", "Continent": "Europe", "Total": 42135, "Percentage": 1.7 },
+      { "Country": "Republic of Korea", "Continent": "Asia", "Total": 41238, "Percentage": 1.7 },
+      { "Country": "France", "Continent": "Europe", "Total": 36347, "Percentage": 1.5 },
+      { "Country": "Singapore", "Continent": "Asia", "Total": 36200, "Percentage": 1.5 },
+      { "Country": "Malaysia", "Continent": "Asia", "Total": 27256, "Percentage": 1.1 },
+      { "Country": "(Taiwan)", "Continent": "Asia", "Total": 24162, "Percentage": 1.0 },
+      { "Country": "Vietnam", "Continent": "Asia", "Total": 22185, "Percentage": 0.9 },
+      { "Country": "Other", "Continent": "Various", "Total": 171497, "Percentage": 6.9 }
+    ]
+  }
+  

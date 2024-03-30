@@ -35,20 +35,42 @@
         </div>
       </div>
     </nav>
-    <div class="row">
-        <section id="choropleth" class="col-5" style="border: 1px solid black;">
+    <div class="col d-flex flex-column align-items-center justify-content-center">
+      <h1 class="m-5">Choropleth Analysis</h1>
 
+      <div class="card col-8 mb-5" >
+        <div class="card-body">
+          <h5 class="card-title">How to use this visualisation</h5>
+          <p class="card-text">Users can select parameters like "inflow" or "outflow" to view immigration data from different perspectives. They can explore the treemap visualization by clicking on regions or countries, where the size of each rectangle represents immigration numbers and colors indicate continents. Interacting with the choropleth map involves hovering over regions or prefectures to see detailed immigration statistics, with color intensity reflecting the magnitude of immigration. Users can navigate the tornado chart to visualize population changes by age group, clicking on bars to switch between inflow and outflow data for different regions. Providing a feedback option allows users to share thoughts on usability and clarity, while including a reset or clear selection feature enables exploration of different datasets. Accessible documentation or tooltips within the interface further aids users in understanding how to interact effectively with each component.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <section id="choropleth" class="col-5" style="border: 1px solid rgb(146, 146, 146); border-radius: 20px;">
 
         </section>
         <section class="col-7">
 
           <p id="prefecture"></p>
-          <div id="tornado_chart" style="border: 1px solid black;"></div>
-
+          <div id="tornado_chart"></div>
         </section>
+
+    </div>    
+    <div id="treeMap"></div>
+    <div class="row">
+
     </div>
         <button id="clear">Clear shits</button>
 
+
+    </div>
+    <footer class="bg-body-tertiary text-center text-lg-start">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 Copyright:
+        <span class="text-body" href="https://mdbootstrap.com/">Ho Thanh An, Dang Nam Khanh</span>
+      </div>
+    </footer>
     <script src="scripts/choropleth.js"></script>
   </body>
 </html>
