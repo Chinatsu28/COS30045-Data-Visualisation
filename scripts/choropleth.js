@@ -343,18 +343,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .attr("width", (d) => Math.abs(xScale(d.outflow) - xScale(0)))
       .attr("prefecture", (d) => d.prefecture); // Add prefecture attribute
     // Add x-axis
-    svg
-      .append("g")
-      .attr("class", "x-axis")
-      .attr("transform", `translate(0,${height})`)
-      .call(d3.axisBottom(xScale));
-
-    // Add y-axis
-    svg
-      .append("g")
-      .attr("class", "y-axis")
-      .attr("transform", `translate(50 ,0)`)
-      .call(d3.axisLeft(yScale));
+   
 
     // Add labels
     svg
@@ -364,13 +353,6 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .attr("text-anchor", "middle")
       .text("Population Change");
 
-    svg
-      .append("text")
-      .attr("x", -margin.left - 200)
-      .attr("y", -margin.top / 2 )
-      .attr("text-anchor", "middle")
-      .attr("transform", "rotate(-90)")
-      .text("Age Range");
 
     // Add legend
     const legend = svg
@@ -388,7 +370,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
         .attr("y", -50)
       .attr("fill", "cornflowerblue");
 
-    legend.append("text").attr("x", -50).attr("y", -40).text("Inflow");
+    legend.append("text").attr("x", -60).attr("y", -35).text("Inflow");
 
     legend
       .append("rect")
@@ -397,7 +379,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .attr("y", -20)
       .attr("fill", "#e62020");
 
-    legend.append("text").attr("x", -50).attr("y", -10).text("Outflow");
+    legend.append("text").attr("x", -60).attr("y", -5).text("Outflow");
   });
 }
 
