@@ -42,37 +42,32 @@
         <div class="card-body">
           <h5 class="card-title">How to use this visualisation</h5>
           <p class="card-text">Users can select parameters like "inflow" or "outflow" to view immigration data from different perspectives. They can explore the treemap visualization by clicking on regions or countries, where the size of each rectangle represents immigration numbers and colors indicate continents. Interacting with the choropleth map involves hovering over regions or prefectures to see detailed immigration statistics, with color intensity reflecting the magnitude of immigration. Users can navigate the tornado chart to visualize population changes by age group, clicking on bars to switch between inflow and outflow data for different regions. Providing a feedback option allows users to share thoughts on usability and clarity, while including a reset or clear selection feature enables exploration of different datasets. Accessible documentation or tooltips within the interface further aids users in understanding how to interact effectively with each component.</p>
-          <button id="clear" class="btn btn-primary">Clear shits</button>
         </div>
-        
       </div>
     </div>
 
     <div class="row">
+      
+        <section id="choropleth" class="" style="border-radius: 20px; background: #f2f2f2; max-height: 650px">
 
-        <section class="col-5 d-flex flex-column align-items-center" style="border: 1px solid rgb(146, 146, 146); border-radius: 20px;">
-          <p id="captionChoro">Japanese prefectures</p>
-          <div id="choropleth" class="" style="border-radius: 20px; background: #f2f2f2; max-height: 650px"></div>
         </section>
         <section class="col-7">
 
           <p id="prefecture" class="m-5"></p>
           <div id="tornado_chart"></div>
-          <caption id="captionTornado" >
+          <caption id="captionTornado" >Figure 4: Number of Immigrant and Emigrant by age group and prefecture
           </caption>
-          
+          <div id="treeMap"></div>
         </section>
 
     </div>    
-    <h3 id="treemapSection" style="text-align: center;" class="m-5"></h2>
-    <div class="row d-flex justify-content-center">
-      
-      <div id="treeMap" class="col-7"></div>
-      <div class="card col-2">
-        <div id="treemap_caption" >
-        </div>
-        
-      </div>
+
+    <div class="row">
+
+    </div>
+        <button id="clear">Clear shits</button>
+    <div>
+
 
     </div>
     <footer class="bg-body-tertiary text-center text-lg-start">
