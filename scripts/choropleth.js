@@ -316,6 +316,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
 
     // Create bars for inflow
     const inflowBars = svg
+<<<<<<< Updated upstream
       .selectAll(".inflow-bar")
       .data(ageGroups)
       .enter()
@@ -335,6 +336,21 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
       .duration(1000) // Transition duration
       .attr("width", (d) => Math.abs(xScale(d.inflow) - xScale(0) - 50))
       .attr("prefecture", (d) => d.prefecture) // Add prefecture attribute
+=======
+.selectAll(".inflow-bar")
+.data(ageGroups)
+.enter()
+.append("g")
+.attr("class", "inflow-bar")
+.on("click", function (d) {
+  color = "inflow";
+  choropleth(color);
+  treemap("../data/immigrant_by_nationality.json");
+  document.getElementById("captionChoro").innerHTML = "Choropleth of Japan prefectures according to the number of immigrants.";
+  document.getElementById("treemap_caption").innerHTML = "<b>Country:</b> <br><b>Continent:</b> <br><b>Total:</b>  <br><b>Percentage:</b> ";
+  document.getElementById("treemapSection").innerHTML = "Percentage of <b>Immigrant into Japan</b> by nationality.";
+});
+>>>>>>> Stashed changes
 
     // Create bars for outflow
     const outflowBars = svg
@@ -354,11 +370,78 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
         choropleth(color);
       })
 
+<<<<<<< Updated upstream
       .transition()
       .duration(1000) // Transition duration
       .attr("width", (d) => Math.abs(xScale(d.outflow) - xScale(0)))
       .attr("prefecture", (d) => d.prefecture); // Add prefecture attribute
     // Add x-axis
+=======
+inflowBars
+.append("text")
+.attr("class", "bar-label")
+.attr("x", 0)
+.attr("y", (d) => yScale(d.age_range) + yScale.bandwidth() / 2)
+.attr("dy", "0.35em")
+.attr("color", "white")
+.attr("font-size", "10px")
+.text((d) => d.age_range);
+
+inflowBars
+  .append("text")
+  .attr("class", "bar-value")
+  .attr("x", function(d) {
+    // Check if the width of the bar is less than a certain threshold
+    // If so, position the text to the right of the bar, otherwise, position it to the left
+    if (Math.abs(xScale(d.inflow) - xScale(0)) < 40) {
+      return xScale(Math.abs(d.inflow)) + 5; // Position to the right of the bar
+    } else {
+      return xScale(Math.abs(d.inflow)) + 35; // Position to the left of the bar
+    }
+  })
+  .attr("y", (d) => yScale(d.age_range) + yScale.bandwidth() / 2)
+  .attr("dy", "0.35em")
+  .text((d) => d.inflow);
+
+
+
+
+// Create bars for outflow
+const outflowBars = svg
+.selectAll(".outflow-bar")
+.data(ageGroups)
+.enter()
+.append("g")
+.attr("class", "outflow-bar")
+.on("click", function (d) {
+  color = "outflow";
+  treemap("../data/emigrant_by_nationality.json");
+  choropleth(color);
+  document.getElementById("captionChoro").innerHTML = "Choropleth of Japan prefectures according to the number of emigrants.";
+  document.getElementById("treemap_caption").innerHTML = "<b>Country:</b> <br><b>Continent:</b> <br><b>Total:</b>  <br><b>Percentage:</b> ";
+    document.getElementById("treemapSection").innerHTML = "Percentage of <b>Emigrant from Japan</b> by nationality.";
+});
+
+outflowBars
+.append("rect")
+.attr("x", (d) => xScale(-Math.abs(d.outflow))) // Start from 0 for outflow
+.attr("y", (d) => yScale(d.age_range))
+.attr("width", 0) // Initially set width to 0 for animation
+.attr("height", yScale.bandwidth())
+.style("fill", "#e62020")
+.transition()
+.duration(1000) // Transition duration
+.attr("width", (d) => Math.abs(xScale(d.outflow) - xScale(0)))
+.attr("prefecture", (d) => d.prefecture); // Add prefecture attribute
+
+outflowBars
+.append("text")
+.attr("class", "bar-value")
+.attr("x", (d) => xScale(-Math.abs(d.outflow)) - 60)
+.attr("y", (d) => yScale(d.age_range) + yScale.bandwidth() / 2)
+.attr("dy", "0.35em")
+.text((d) => d.outflow);
+>>>>>>> Stashed changes
    
 
     // Add labels

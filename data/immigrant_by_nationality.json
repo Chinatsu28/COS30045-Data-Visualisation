@@ -3,7 +3,11 @@
     {
       "Continent": "Asia",
       "Country": "India",
+<<<<<<< Updated upstream
       "Total": 355032,
+=======
+      "Total": 352000,
+>>>>>>> Stashed changes
       "Percentage": 12.8
     },
     {
