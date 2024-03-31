@@ -17,7 +17,7 @@ function init(data) {
      .attr("width", w)
      .attr("height", h);
  
-   var tooltip = d3.select("body")
+   var tooltip = d3.select("#proportion")
      .append("div")
      .attr("class", "tooltip")
      .style("opacity", 0);
@@ -28,7 +28,7 @@ function init(data) {
      .append("g")
      .attr("class", "arc")
      .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")")
-     .on("mouseover", function(event, d) {
+     .on("mouseover", function( d) {
       d3.select(this).select("path")
           .transition()
           .duration(100)
@@ -53,10 +53,10 @@ function init(data) {
             .append("rect")
             .attr("class", "tooltip-box")
             .attr("x", tooltipX)
-            .attr("y", tooltipY)
+            .attr("y", tooltipY - 200)
             .attr("width", tooltipWidth + 10)
             .attr("height", tooltipHeight)
-            .attr("fill", "rgba(62,197,255,0.8)")
+            .attr("fill", "rgb(73,73,73, 0.9)")
             .style("border-radius", "10px"); // Orange background color
   
           // Add text to the tooltip box
@@ -64,10 +64,11 @@ function init(data) {
             .append("text")
             .attr("class", "tooltip-text")
             .attr("x", tooltipX + tooltipWidth / 2)
-            .attr("y", tooltipY + tooltipHeight / 2)
+            .attr("y", tooltipY + tooltipHeight / 2 - 200)
             .attr("dy", "0.35em")
             .attr("text-anchor", "middle")
-            .text(d.data.value);
+            .attr("fill", "white")
+            .text(d.data.value + "%");
   })
   .on("mouseout", function() {
       d3.select(this).select("path")

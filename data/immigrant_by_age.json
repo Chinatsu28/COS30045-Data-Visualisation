@@ -71,35 +71,35 @@
                 "outflow": 5451
               },
               {
-                "age_range": "30-39",
-                "inflow": 1892,
-                "outflow": 2345
-              },
-              {
-                "age_range": "40-49",
-                "inflow": 967,
+                "age_range": "30-39","inflow": 1892,
                 "outflow": 3149
                 
               },
               {
-                "age_range": "50-59",
-                "inflow": 1167,
+                "age_range": "40-49","inflow": 1783,
                 "outflow": 2941
+                
+                
               },
               {
-                "age_range": "60-69",
-                "inflow": 1783,
-                "outflow": 651
+                "age_range": "50-59","inflow": 1167,
+                
+                "outflow": 2345
               },
               {
-                "age_range": "70-79",
-                "inflow": 453,
+                "age_range": "60-69","inflow": 967,
+                
                 "outflow": 1743
               },
               {
-                "age_range": "80+",
-                "inflow": 298,
+                "age_range": "70-79","inflow": 453,
+                
                 "outflow": 1012
+              },
+              {
+                "age_range": "80+","inflow": 298,
+                
+                "outflow": 651
               }
             ]
           }
@@ -125,12 +125,12 @@
               {
                 "age_range": "30-39",
                 "inflow": 1892,
-                "outflow": 2345
+                "outflow": 3045
               },
               {
                 "age_range": "40-49",
                 "inflow": 1783,
-                "outflow": 651
+                "outflow": 2951
               },
               {
                 "age_range": "50-59",
@@ -140,7 +140,7 @@
               {
                 "age_range": "60-69",
                 "inflow": 967,
-                "outflow": 3149
+                "outflow": 2549
               },
               {
                 "age_range": "70-79",
@@ -728,12 +728,12 @@
       {
         "age_range": "0-9",
         "inflow": 2453,
-        "outflow": 4356
+        "outflow": 3795
       },
       {
         "age_range": "10-19",
         "inflow": 3254,
-        "outflow": 3795
+        "outflow": 4356
       },
       {
         "age_range": "20-29",
@@ -763,12 +763,12 @@
       {
         "age_range": "70-79",
         "inflow": 201,
-        "outflow": 1003
+        "outflow": 1286
       },
       {
         "age_range": "80+",
-        "inflow": 204,
-        "outflow": 1286
+        "inflow": 204,"outflow": 1003
+        
       }
     ]
   }
@@ -1570,33 +1570,33 @@
         "outflow": 2021
       },
       {
-        "age_range": "20-29",
-        "inflow": 1055,
+        "age_range": "20-29","inflow": 2010,
+        "outflow": 2145
+        
+      },
+      {
+        "age_range": "30-39","inflow": 1798,
+        "outflow": 1821
+        
+      },
+      {
+        "age_range": "40-49","inflow": 1785,
+        
         "outflow": 1710
       },
       {
-        "age_range": "30-39",
-        "inflow": 1091,
-        "outflow": 1086
-      },
-      {
-        "age_range": "40-49",
-        "inflow": 1785,
-        "outflow": 2145
-      },
-      {
-        "age_range": "50-59",
-        "inflow": 2010,
+        "age_range": "50-59","inflow": 1432,
+        
         "outflow": 1325
       },
       {
-        "age_range": "60-69",
-        "inflow": 1432,
-        "outflow": 1821
+        "age_range": "60-69","inflow": 1091,
+        
+        "outflow": 1086
       },
       {
         "age_range": "70-79",
-        "inflow": 1798,
+        "inflow": 1055,
         "outflow": 1234
       },
       {
