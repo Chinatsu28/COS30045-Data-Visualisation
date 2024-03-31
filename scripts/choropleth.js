@@ -34,11 +34,15 @@ function treemap(dataset) {
       .append("g")
       .attr("transform", (d) => `translate(${d.x0},${d.y0})`);
 
-    cell
+    var rectangles = cell
       .append("rect")
       .attr("width", (d) => d.x1 - d.x0)
       .attr("height", (d) => d.y1 - d.y0)
-      .attr("fill", (d) => color(d.data.Continent));
+      .attr("fill", (d) => color(d.data.Continent))
+        .style("opacity", 0) // Initially set opacity to 0
+        .transition() // Start a transition
+        .duration(1000) // Transition duration
+        .style("opacity", 1) // End with opacity 1
 
     cell
       .append("text")
@@ -60,6 +64,7 @@ function treemap(dataset) {
       .attr("height", 18)
       .style("fill", color);
 
+
       legend.append("text")
       .attr("x", 22) // Position text to the right of the rect
       .attr("y", 9)
@@ -75,8 +80,8 @@ function treemap(dataset) {
 
 function choropleth(color) {
     var clickOutsideMap;
-  const originalWidth = 600;
-  const originalHeight = 600;
+  const originalWidth = 550;
+  const originalHeight = 500;
   var selectedPrefecture = null;
   // Enlarge the SVG by 1.5 times
   const enlargedWidth = originalWidth * 1.3;
@@ -93,9 +98,15 @@ function choropleth(color) {
   // Load the GeoJSON data for Japan
   d3.json("../data/japan.json").then(function (json) {
     // Create a projection for the map
-    const projection = d3
-      .geoMercator()
-      .fitSize([enlargedWidth, enlargedHeight], json);
+      const center = d3.geoCentroid(json);
+
+// Define a scale factor
+      const scaleFactor = 14; // Change this value to zoom in or out
+
+      const projection = d3.geoMercator()
+          .scale((enlargedWidth / 2 / Math.PI) * scaleFactor) // Scale the map
+          .translate([enlargedWidth / 2, enlargedHeight / 2]) // Center the map
+          .center(center); // Set the center of the map to the center of the GeoJSON data
 
     // Create a path generator
     const path = d3.geoPath().projection(projection);
@@ -113,6 +124,7 @@ function choropleth(color) {
         .enter()
         .append("path")
         .attr("d", path)
+          .style("transition", "opacity 0.4s")
         .style("fill", function (d) {
           if (color == "inflow") {
             const inflow = inflowMap.get(d.properties.nam);
@@ -164,9 +176,12 @@ function choropleth(color) {
             .attr("y", tooltipY)
             .attr("width", tooltipWidth + 50)
             .attr("height", tooltipHeight)
-            .attr("fill", "#ffdede")
-            .style("border-radius", "10px")
-            .style("stroke", "1px solid black");// Orange background color
+              .attr("rx", 5) // Add horizontal corner radius
+              .attr("ry", 5) // Add vertical corner radius
+            .attr("fill", "black")
+              .style("border-radius", "10px")
+          .style("opacity", 0.6)
+
 
           // Add text to the tooltip box
           svg
@@ -176,6 +191,7 @@ function choropleth(color) {
         .attr("y", tooltipY + tooltipHeight / 2)
         .attr("dy", "0.35em")
         .attr("text-anchor", "middle")
+        .attr("fill", "white")
         .text(function () {
             if (color === "inflow") {
                 const inflow = inflowMap.get(d.properties.nam);
