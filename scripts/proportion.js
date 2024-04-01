@@ -28,11 +28,8 @@ function init(data) {
      .append("g")
      .attr("class", "arc")
      .attr("transform", "translate(" + outerRadius + "," + outerRadius + ")")
-<<<<<<< Updated upstream
      .on("mouseover", function( d) {
-=======
-     .on("mouseover", function(d) {
->>>>>>> Stashed changes
+
       d3.select(this).select("path")
           .transition()
           .duration(100)
@@ -67,21 +64,12 @@ function init(data) {
           svg
             .append("text")
             .attr("class", "tooltip-text")
-<<<<<<< Updated upstream
-            .attr("x", tooltipX + tooltipWidth / 2)
-            .attr("y", tooltipY + tooltipHeight / 2 - 200)
-            .attr("dy", "0.35em")
-            .attr("text-anchor", "middle")
-            .attr("fill", "white")
-            .text(d.data.value + "%");
-=======
             .attr("x", tooltipX + 50)
             .attr("y", tooltipY - 180)
             .attr("dy", "0.35em")
             .attr("text-anchor", "middle")
             .attr("fill", "white")
             .text(d.data.value);
->>>>>>> Stashed changes
   })
   .on("mouseout", function() {
       d3.select(this).select("path")

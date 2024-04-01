@@ -13,8 +13,8 @@
       { "Country": "Singapore", "Continent": "Asia", "Total": 36200, "Percentage": 1.5 },
       { "Country": "Malaysia", "Continent": "Asia", "Total": 27256, "Percentage": 1.1 },
       { "Country": "Taiwan", "Continent": "Asia", "Total": 24162, "Percentage": 1.0 },
-      { "Country": "Vietnam", "Continent": "Asia", "Total": 22185, "Percentage": 0.9 },
-      { "Country": "Other", "Continent": "Various", "Total": 171497, "Percentage": 6.9 }
+      { "Country": "Vietnam", "Continent": "Asia", "Total": 22185, "Percentage": 1.0 },
+      { "Country": "Other", "Continent": "Various", "Total": 171497, "Percentage": 6.8 }
     ]
   }
   

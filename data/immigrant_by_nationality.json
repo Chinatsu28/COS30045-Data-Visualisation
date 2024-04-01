@@ -3,11 +3,7 @@
     {
       "Continent": "Asia",
       "Country": "India",
-<<<<<<< Updated upstream
       "Total": 355032,
-=======
-      "Total": 352000,
->>>>>>> Stashed changes
       "Percentage": 12.8
     },
     {
@@ -38,7 +34,7 @@
       "Continent": "Asia",
       "Country": "Bangladesh",
       "Total": 17538,
-      "Percentage": 0.6
+      "Percentage": 1.0
     },
     {
       "Continent": "Asia",
@@ -50,7 +46,7 @@
       "Continent": "Asia",
       "Country": "Viet Nam",
       "Total": 432934,
-      "Percentage": 15.7
+      "Percentage": 14.7
     },
     {
       "Continent": "Asia",
