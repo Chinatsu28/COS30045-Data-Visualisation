@@ -115,7 +115,7 @@ function choropleth(color) {
         .attr("height", enlargedHeight);
 
     // Load the GeoJSON data for Japan
-    d3.json("../data/japan.json").then(function (json) {
+    d3.json("./scripts/japan.json").then(function (json) {
         // Create a projection for the map
         const center = d3.geoCentroid(json);
 
@@ -131,7 +131,7 @@ function choropleth(color) {
         const path = d3.geoPath().projection(projection);
 
         // Load the CSV data for prefecture inflows
-        d3.csv("../data/a001.csv").then(function (data) {
+        d3.csv("./a001.csv").then(function (data) {
             // Convert inflow data to map for easy lookup
             let inflowMap = new Map(data.map((d) => [d.Prefectures, +d.In]));
             let outflowMap = new Map(data.map((d) => [d.Prefectures, +d.Out]));
@@ -236,7 +236,7 @@ function choropleth(color) {
                     selectedPrefecture = d.properties.nam;
 
                     createTornadoChart(
-                        "../data/immigrant_by_age.json",
+                        "immigrant_by_age.json",
                         selectedPrefecture,
                         colorRange
                     );
@@ -437,7 +437,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
             .on("click", function (d) {
                 color = "inflow";
                 choropleth(color);
-                treemap("../data/immigrant_by_nationality.json");
+                treemap("immigrant_by_nationality.json");
                 document.getElementById("captionChoro").innerHTML = "Choropleth of Japan prefectures according to the <span class='font-weight-bold text fs-2'>number of immigrants</span>.";
                 document.getElementById("treemap_caption").innerHTML = "<b>Country:</b> <br><b>Continent:</b> <br><b>Total:</b>  <br><b>Percentage:</b> ";
                 document.getElementById("treemapSection").innerHTML = "Percentage of <b>Immigrant to Japan</b> by nationality";
@@ -494,7 +494,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
             .attr("class", "outflow-bar")
             .on("click", function (d) {
                 color = "outflow";
-                treemap("../data/emigrant_by_nationality.json");
+                treemap("emigrant_by_nationality.json");
                 choropleth(color);
                 document.getElementById("captionChoro").innerHTML = "Choropleth of Japan prefectures according to the <span class='font-weight-bold'>number of emigrants</span>.";
                 document.getElementById("treemap_caption").innerHTML = "<b>Country:</b> <br><b>Continent:</b> <br><b>Total:</b>  <br><b>Percentage:</b> ";
