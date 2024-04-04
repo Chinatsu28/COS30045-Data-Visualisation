@@ -1,14 +1,16 @@
-
 var immigrantSelected = null;
 var color = null;
 var colorRange = {
     inflow: ["lightblue", "darkblue"], // Define color range for inflow
     outflow: ["rgb(255,180,180)", "#ce0000"], // Define color range for outflow
 };
+var hoverRect = null;
 
 function treemap(dataset) {
     // Fetch data from JSON file
-    d3.json(dataset).then(function(data) {
+    const tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0).style("transition", "opacity 0.3s");
+
+    d3.json(dataset).then(function (data) {
         // Create the tree map
         var width = 1200; // Reduce the width
         var height = 400;
@@ -23,9 +25,10 @@ function treemap(dataset) {
 
         var treemap = d3.treemap().size([width * 0.7, height]).padding(1); // Adjust size
 
-        var root = d3.hierarchy({ children: data.data }).sum((d) => d.Total);
+        var root = d3.hierarchy({children: data.data}).sum((d) => d.Total);
 
         treemap(root);
+
 
         var cell = svg
             .selectAll("g")
@@ -40,34 +43,49 @@ function treemap(dataset) {
             .attr("height", (d) => d.y1 - d.y0)
             .attr("fill", (d) => color(d.data.Continent))
 
-            .on("mouseover", function (d) {
+            .on("mousemove", function (d) {
+                document.getElementById("treemap_caption").innerHTML = "<b>Country:</b> " + d.data.Country + "<br><b>Continent:</b> " + d.data.Continent + "<br><b>Total:</b> " + d.data.Total + " people<br><b>Percentage:</b> " + d.data.Percentage + "%";
 
-
-
-
-                document.getElementById("treemap_caption").innerHTML = "<b>Country:</b> " + d.data.Country + "<br><b>Continent:</b> " + d.data.Continent + "<br><b>Total:</b> " + d.data.Total+ " people<br><b>Percentage:</b> " + d.data.Percentage + "%";
+                tooltip.html(
+                    "<b>Country:</b> " + d.data.Country + "<br>" +
+                    "<b>Continent:</b> " + d.data.Continent + "<br>" +
+                    "<b>Total:</b> " + d.data.Total + " people<br>" +
+                    "<b>Percentage:</b> " + d.data.Percentage + "%"
+                ).style("color", "white");
+                tooltip
+                    .style("opacity", 0.9)
+                    .style("left", (d3.event.pageX - 50) + "px")
+                    .style("top", (d3.event.pageY - 130) + "px");
             })
 
             .on("mouseout", function () {
                 document.getElementById("treemap_caption").innerHTML = "<b>Country:</b> <br><b>Continent:</b> <br><b>Total:</b>  <br><b>Percentage:</b> ";
+                tooltip.style("opacity", 0);
             });
 
         cell
             .append("text")
-            .attr("x", function(d) {
+            .attr("x", function (d) {
                 return d.data.Percentage >= 1 ? (d.x1 - d.x0) / 2 - 7 : (d.y1 - d.y0) / 2 - 50; // Adjust x position based on condition
             })
 
-            .attr("y", function(d) {
+            .attr("y", function (d) {
                 return d.data.Percentage >= 1 ? (d.y1 - d.y0) / 2 + 5 : (d.x1 - d.x0) / 2 + 3; // Set y position slightly below the center
             })
             .attr("fill", "white")
             .style("z-index", "1000")
 
-            .attr("transform", function(d) {
+            .attr("transform", function (d) {
                 return d.data.Percentage < 1 ? "rotate(-90)" : null; // Rotate text by -90 degrees if Percentage is lower than 0.6
             })
-            .text((d) => `${d.data.Percentage}`);
+            .text((d) => `${d.data.Percentage}`)
+            .on("mousemove", function () {
+                return tooltip.style("opacity", 1).style("left", (d3.event.pageX - 50) + "px")
+                    .style("top", (d3.event.pageY - 130) + "px");
+            })
+            .on("mouseout", function () {
+                return tooltip.style("opacity", 0);
+            });
 
 
         // Legend
@@ -75,7 +93,9 @@ function treemap(dataset) {
             .data(color.domain())
             .enter().append("g")
             .attr("class", "legend")
-            .attr("transform", function(d, i) { return "translate(" + (width * 0.8) + "," + (i * 20 + 20) + ")"; }); // Adjust position
+            .attr("transform", function (d, i) {
+                return "translate(" + (width * 0.8) + "," + (i * 20 + 20) + ")";
+            }); // Adjust position
 
         legend.append("rect")
             .attr("x", 0)
@@ -89,12 +109,11 @@ function treemap(dataset) {
             .attr("y", 9)
             .attr("dy", ".35em")
             .style("text-anchor", "start") // Align text to the start of the rect
-            .text(function(d) { return d; });
+            .text(function (d) {
+                return d;
+            });
     });
 }
-
-
-
 
 
 function choropleth(color) {
@@ -184,8 +203,8 @@ function choropleth(color) {
                     const mouseX = d3.event.pageX;
                     const mouseY = d3.event.pageY - svgBounds.top - window.scrollY - 20;
 
-                    const tooltipX = mouseX  - tooltipWidth / 2;
-                    const tooltipY = mouseY  - tooltipHeight - 10// Adjust for a small gap
+                    const tooltipX = mouseX - tooltipWidth / 2;
+                    const tooltipY = mouseY - tooltipHeight - 10// Adjust for a small gap
 
                     // Add a tooltip box
                     svg
@@ -254,7 +273,6 @@ function choropleth(color) {
                     }
 
 
-
                 })
 
                 .on("mouseout", function () {
@@ -269,15 +287,17 @@ function choropleth(color) {
                 });
             d3.select("#clear").on("click", function () {
                 clickOutsideMap = false;
-                color=null;
+                color = null;
                 choropleth();
                 features.style("opacity", 0.7);
                 document.getElementById("captionChoro").innerHTML = "Japan prefectures";
             });
-            function zoomed(){
+
+            function zoomed() {
                 const {transform} = d3.event;
                 features.attr("transform", transform);
             }
+
             const zoom = d3.zoom()
                 .scaleExtent([1, 8])
                 .on("zoom", zoomed);
@@ -286,81 +306,81 @@ function choropleth(color) {
 
             // Add legend for color scheme
 // Add legend for color scheme
-const legend = svg.append("g")
-  .attr("class", "legend")
-  .attr("transform", `translate(${originalWidth},${originalHeight + 100})`);
+            const legend = svg.append("g")
+                .attr("class", "legend")
+                .attr("transform", `translate(${originalWidth},${originalHeight + 100})`);
 
-  const gradient = legend.append("defs")
-  .append("linearGradient")
-  .attr("id", "gradient")
-  .attr("x1", "0%")
-  .attr("y1", "0%")
-  .attr("x2", "100%")
-  .attr("y2", "0%");
+            const gradient = legend.append("defs")
+                .append("linearGradient")
+                .attr("id", "gradient")
+                .attr("x1", "0%")
+                .attr("y1", "0%")
+                .attr("x2", "100%")
+                .attr("y2", "0%");
 
-gradient.append("stop")
-  .attr("offset", "0%")
-  .attr("stop-color", function(d) {
-    if (color === "inflow") {
-      return colorRange.inflow[0];
-    } else if (color === "outflow") {
-      return colorRange.outflow[0];
-    } else {
-      return "#f2f2f2";
-    }
-  
-  });
+            gradient.append("stop")
+                .attr("offset", "0%")
+                .attr("stop-color", function (d) {
+                    if (color === "inflow") {
+                        return colorRange.inflow[0];
+                    } else if (color === "outflow") {
+                        return colorRange.outflow[0];
+                    } else {
+                        return "#f2f2f2";
+                    }
 
-gradient.append("stop")
-  .attr("offset", "100%")
-  .attr("stop-color", function(d) {
-    if (color === "inflow") {
-      return colorRange.inflow[1];
-    } else if (color === "outflow") {
-      return colorRange.outflow[1];
-    } else {
-      return "#f2f2f2";
-    }
-    
-  });
+                });
 
-legend.append("rect")
-  .attr("x", -50)
-  .attr("y", +20)
-  .attr("width", 200)
-  .attr("height", 10)
-  .style("fill", "url(#gradient)");
+            gradient.append("stop")
+                .attr("offset", "100%")
+                .attr("stop-color", function (d) {
+                    if (color === "inflow") {
+                        return colorRange.inflow[1];
+                    } else if (color === "outflow") {
+                        return colorRange.outflow[1];
+                    } else {
+                        return "#f2f2f2";
+                    }
 
-legend.append("text")
-  .attr("x", -10)
-  .attr("y", 6)
-  .style("text-anchor", "end")
-  .style("font-size", "12px")
-  .text(function(d) {
-    if (color === "inflow") {
-      return "Low";
-    } else if (color === "outflow") {
-      return "Low";
-    } else {
-      return " ";
-    }
-  });
+                });
 
-legend.append("text")
-  .attr("x", 110)
-  .attr("y", 6)
-  .style("text-anchor", "start")
-  .style("font-size", "12px")
-  .text(function(d) {
-    if (color === "inflow") {
-      return "High";
-    } else if (color === "outflow") {
-      return "High";
-    } else {
-      return " ";
-    }
-  
-  });
+            legend.append("rect")
+                .attr("x", -50)
+                .attr("y", +20)
+                .attr("width", 200)
+                .attr("height", 10)
+                .style("fill", "url(#gradient)");
+
+            legend.append("text")
+                .attr("x", -10)
+                .attr("y", 6)
+                .style("text-anchor", "end")
+                .style("font-size", "12px")
+                .text(function (d) {
+                    if (color === "inflow") {
+                        return "Low";
+                    } else if (color === "outflow") {
+                        return "Low";
+                    } else {
+                        return " ";
+                    }
+                });
+
+            legend.append("text")
+                .attr("x", 110)
+                .attr("y", 6)
+                .style("text-anchor", "start")
+                .style("font-size", "12px")
+                .text(function (d) {
+                    if (color === "inflow") {
+                        return "High";
+                    } else if (color === "outflow") {
+                        return "High";
+                    } else {
+                        return " ";
+                    }
+
+                });
 
 
         });
@@ -395,7 +415,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
         const tornadoChartContainer = d3.select("#tornado_chart");
 
         // Set up the dimensions and margins for the chart
-        const margin = { top: 20, right: 30, bottom: 20, left: 30 };
+        const margin = {top: 20, right: 30, bottom: 20, left: 30};
         const width =
             tornadoChartContainer.node().getBoundingClientRect().width -
             margin.left -
@@ -469,7 +489,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
         inflowBars
             .append("text")
             .attr("class", "bar-value")
-            .attr("x", function(d) {
+            .attr("x", function (d) {
                 // Check if the width of the bar is less than a certain threshold
                 // If so, position the text to the right of the bar, otherwise, position it to the left
                 if (Math.abs(xScale(d.inflow) - xScale(0)) < 40) {
@@ -481,8 +501,6 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
             .attr("y", (d) => yScale(d.age_range) + yScale.bandwidth() / 2)
             .attr("dy", "0.35em")
             .text((d) => d.inflow);
-
-
 
 
 // Create bars for outflow

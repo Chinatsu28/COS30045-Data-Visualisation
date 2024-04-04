@@ -9,3 +9,18 @@
 .tooltip-box{
 
 }
+
+.tooltip{
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 10px;
+
+
+}
+
+.hover-rect {
+    position: absolute;
+    border: 1px solid #333;
+    background-color: rgba(255, 255, 255, 0.8);
+    pointer-events: none; /* Ignore mouse events to allow interaction with the treemap */
+}
