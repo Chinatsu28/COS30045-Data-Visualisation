@@ -19,7 +19,7 @@ function treemap(dataset) {
             .select("#treeMap")
             .append("svg")
             .attr("width", width)
-            .attr("height", height);
+            .attr("height", height)
 
         var color = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -35,16 +35,19 @@ function treemap(dataset) {
             .data(root.leaves())
             .enter()
             .append("g")
-            .attr("transform", (d) => `translate(${d.x0},${d.y0})`);
+            .attr("transform", (d) => `translate(${d.x0},${d.y0})`)
+
 
         var rectangles = cell
             .append("rect")
             .attr("width", (d) => d.x1 - d.x0)
             .attr("height", (d) => d.y1 - d.y0)
             .attr("fill", (d) => color(d.data.Continent))
+            .attr("stroke", "white") // This will create a black border
+            .attr("stroke-width", 2)
 
             .on("mousemove", function (d) {
-
+                
 
                 tooltip.html(
                     "<b>Country:</b> " + d.data.Country + "<br>" +
@@ -56,11 +59,14 @@ function treemap(dataset) {
                     .style("opacity", 0.9)
                     .style("left", (d3.event.pageX - 50) + "px")
                     .style("top", (d3.event.pageY - 130) + "px");
+
+                d3.select(this).style("stroke", "black");
             })
 
             .on("mouseout", function () {
 
                 tooltip.style("opacity", 0);
+                d3.select(this).style("stroke", "white").style("cursor", "pointer");
             });
 
         cell
@@ -249,7 +255,8 @@ function choropleth(color) {
                     d3.select(this).style("stroke", "black")
                         .style("stroke-width", 0.7)
                         .style("stroke-linejoin", "round") // Add this line
-                        .style("stroke-linecap", "round"); // Add this line
+                        .style("stroke-linecap", "round")// Add this line
+                        .style("cursor", "pointer" );
                 })
                 .on("click", function (d) {
                     selectedPrefecture = d.properties.nam;
@@ -461,6 +468,13 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
                 document.getElementById("captionChoro").innerHTML = "Choropleth of Japan prefectures according to the <span class='font-weight-bold text fs-2'>number of immigrants</span>.";
                 document.getElementById("treemapSection").innerHTML = "Percentage of <b>Immigrant to Japan</b> by nationality";
 
+            })
+            .on("mouseover", function() {
+                d3.selectAll(".outflow-bar").transition().duration(300).style("opacity", 0.3);
+                d3.select(this).style("cursor", "pointer");
+            })
+            .on("mouseout", function() {
+                d3.selectAll(".outflow-bar").transition().duration(300).style("opacity", 1);
             });
 
         inflowBars
@@ -515,6 +529,13 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
                 choropleth(color);
                 document.getElementById("captionChoro").innerHTML = "Choropleth of Japan prefectures according to the <span class='font-weight-bold'>number of emigrants</span>.";
                 document.getElementById("treemapSection").innerHTML = "Percentage of <b>Emigrant from Japan</b> by destination";
+            })
+            .on("mouseover", function() {
+                d3.selectAll(".inflow-bar").transition().duration(300).style("opacity", 0.3);
+                d3.select(this).style("cursor", "pointer");
+            })
+            .on("mouseout", function() {
+                d3.selectAll(".inflow-bar").transition().duration(300).style("opacity", 1);
             });
 
         outflowBars
