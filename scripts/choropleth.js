@@ -44,7 +44,7 @@ function treemap(dataset) {
             .attr("fill", (d) => color(d.data.Continent))
 
             .on("mousemove", function (d) {
-                document.getElementById("treemap_caption").innerHTML = "<b>Country:</b> " + d.data.Country + "<br><b>Continent:</b> " + d.data.Continent + "<br><b>Total:</b> " + d.data.Total + " people<br><b>Percentage:</b> " + d.data.Percentage + "%";
+
 
                 tooltip.html(
                     "<b>Country:</b> " + d.data.Country + "<br>" +
@@ -59,7 +59,7 @@ function treemap(dataset) {
             })
 
             .on("mouseout", function () {
-                document.getElementById("treemap_caption").innerHTML = "<b>Country:</b> <br><b>Continent:</b> <br><b>Total:</b>  <br><b>Percentage:</b> ";
+
                 tooltip.style("opacity", 0);
             });
 
@@ -326,7 +326,7 @@ function choropleth(color) {
                     } else if (color === "outflow") {
                         return colorRange.outflow[0];
                     } else {
-                        return "#f2f2f2";
+                        return "white";
                     }
 
                 });
@@ -339,7 +339,7 @@ function choropleth(color) {
                     } else if (color === "outflow") {
                         return colorRange.outflow[1];
                     } else {
-                        return "#f2f2f2";
+                        return "white";
                     }
 
                 });
@@ -459,7 +459,6 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
                 choropleth(color);
                 treemap("immigrant_by_nationality.json");
                 document.getElementById("captionChoro").innerHTML = "Choropleth of Japan prefectures according to the <span class='font-weight-bold text fs-2'>number of immigrants</span>.";
-                document.getElementById("treemap_caption").innerHTML = "<b>Country:</b> <br><b>Continent:</b> <br><b>Total:</b>  <br><b>Percentage:</b> ";
                 document.getElementById("treemapSection").innerHTML = "Percentage of <b>Immigrant to Japan</b> by nationality";
 
             });
@@ -515,7 +514,6 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
                 treemap("emigrant_by_nationality.json");
                 choropleth(color);
                 document.getElementById("captionChoro").innerHTML = "Choropleth of Japan prefectures according to the <span class='font-weight-bold'>number of emigrants</span>.";
-                document.getElementById("treemap_caption").innerHTML = "<b>Country:</b> <br><b>Continent:</b> <br><b>Total:</b>  <br><b>Percentage:</b> ";
                 document.getElementById("treemapSection").innerHTML = "Percentage of <b>Emigrant from Japan</b> by destination";
             });
 
