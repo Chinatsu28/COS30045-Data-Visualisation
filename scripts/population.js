@@ -1,5 +1,5 @@
 function population() {
-  d3.csv("../data/population.csv").then(function (data) {
+  d3.csv("./population.csv").then(function (data) {
     // Convert numerical values from strings to numbers
     data.forEach(function (d) {
       d.Inflows = +d.Inflows;

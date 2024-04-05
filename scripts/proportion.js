@@ -140,7 +140,7 @@ function updateChart(data) {
 }
 
 window.onload = function() {
-   d3.csv("../data/immigration_proportion.csv").then(function(data) {
+   d3.csv("./immigration_proportion.csv").then(function(data) {
       // Initial rendering of the chart with the default year
       updateChart(data);
 
