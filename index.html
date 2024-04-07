@@ -40,17 +40,32 @@
 
     <div class="card col-8 mb-5">
         <div class="card-body">
-            <h5 class="card-title">How to use this visualisation</h5>
-            <p class="card-text">Users can select parameters like "inflow" or "outflow" to view immigration data from
-                different perspectives. They can explore the treemap visualization by clicking on regions or countries,
-                where the size of each rectangle represents immigration numbers and colors indicate continents.
-                Interacting with the choropleth map involves hovering over regions or prefectures to see detailed
-                immigration statistics, with color intensity reflecting the magnitude of immigration. Users can navigate
-                the tornado chart to visualize population changes by age group, clicking on bars to switch between
-                inflow and outflow data for different regions. Providing a feedback option allows users to share
-                thoughts on usability and clarity, while including a reset or clear selection feature enables
-                exploration of different datasets. Accessible documentation or tooltips within the interface further
-                aids users in understanding how to interact effectively with each component.</p>
+            <h4 class="card-title">How to use this visualisation</h4>
+            <p>
+                For the <b>Choropleth map</b>:
+            </p>
+            <ul>
+                <li>Hover and click on a prefecture to open immigration and emigration tonador chart</li>
+                <li>After selecting the inflow/outflow side of the tonador chart, <b>hovering</b> on a prefecture will show its <b>immigrants/emmigrants total numbers</b></li>
+                <li><b>Press</b> the <b>"Clear"</b> button to <b>reset</b> the selection</li>
+                <li>Set the mouse in the Choropleth map and use <b>scroll up/down</b> to zoom in/out</li>
+            </ul>
+            <p>
+                For the <b>tornado chart</b> clicking on a <b>rightside/leftside bars</b> will:
+            </p>
+            <ul>
+                <li> <b>Switch</b> between <b>inflow</b> and <b>outflow</b> Choropleth map</li>
+                <li> Showing tree map based on <b>immigration/emmigration</b> number</li>
+            </ul>
+            <p>
+                For the <b>Tree map</b>:
+            </p>
+            <ul>
+                <li>Hover on each cells to view details information</li>
+                <li><b>Click</b> on <b>rightside/leftside bars of tornado chart</b> to change the <b>immigration/emmigration</b> tree map</li>
+            </ul>
+
+
             <button id="clear" class="btn btn-primary">Clear</button>
         </div>
 
@@ -64,7 +79,7 @@
         <div id="choropleth" class="" style=" max-height: 650px"></div>
     </section>
     <section class="col-7">
-
+        <h3 class="text-center">Tornado chart</h3>
         <p id="prefecture" class="m-5"></p>
         <div id="tornado_chart"></div>
         <caption id="captionTornado">
@@ -73,12 +88,14 @@
     </section>
 
 </div>
-<p id="treemapSection" style="text-align: center;" class="m-5"></p>
+<h3 class="text-center">Tree map</h3>
+<p id="treemapSection" style="text-align: center;" class="m-5">Click on the <b>tornado chart </b>to open tree map</p>
 <div class="d-flex justify-content-center">
 
     <div id="treeMap" class="col-7 position-relative"></div>
     <div class="col-2 " style="max-height: 400px;">
         <div id="treemap_caption">
+
         </div>
 
     </div>

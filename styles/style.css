@@ -18,6 +18,17 @@
 
 }
 
+.inflow-bar{
+    transition: opacity 0.3s;
+
+}
+
+.outflow-bar{
+    transition: opacity 0.3s;
+
+
+}
+
 .hover-rect {
     position: absolute;
     border: 1px solid #333;

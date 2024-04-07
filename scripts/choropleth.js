@@ -44,10 +44,10 @@ function treemap(dataset) {
             .attr("height", (d) => d.y1 - d.y0)
             .attr("fill", (d) => color(d.data.Continent))
             .attr("stroke", "white") // This will create a black border
-            .attr("stroke-width", 2)
+            .attr("stroke-width", 1.5)
 
             .on("mousemove", function (d) {
-                
+
 
                 tooltip.html(
                     "<b>Country:</b> " + d.data.Country + "<br>" +
@@ -60,7 +60,6 @@ function treemap(dataset) {
                     .style("left", (d3.event.pageX - 50) + "px")
                     .style("top", (d3.event.pageY - 130) + "px");
 
-                d3.select(this).style("stroke", "black");
             })
 
             .on("mouseout", function () {
@@ -469,25 +468,26 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
                 document.getElementById("treemapSection").innerHTML = "Percentage of <b>Immigrant to Japan</b> by nationality";
 
             })
-            .on("mouseover", function() {
-                d3.selectAll(".outflow-bar").transition().duration(300).style("opacity", 0.3);
-                d3.select(this).style("cursor", "pointer");
-            })
-            .on("mouseout", function() {
-                d3.selectAll(".outflow-bar").transition().duration(300).style("opacity", 1);
-            });
+            
 
-        inflowBars
+            var thebars = inflowBars
             .append("rect")
             .attr("x", (d) => xScale(0)) // Start from 0 for inflow
             .attr("y", (d) => yScale(d.age_range))
             .attr("width", 0) // Initially set width to 0 for animation
             .attr("height", yScale.bandwidth())
             .style("fill", "cornflowerblue")
+            .on("mouseover", function() {
+                d3.selectAll(".outflow-bar").style("opacity", 0.3);
+                d3.select(this).style("cursor", "pointer");
+            })
+            .on("mouseout", function() {
+                d3.selectAll(".outflow-bar").style("opacity", 1);
+            })
             .transition()
             .duration(1000) // Transition duration
             .attr("width", (d) => Math.abs(xScale(d.inflow) - xScale(0)))
-            .attr("prefecture", (d) => d.prefecture); // Add prefecture attribute
+            .attr("prefecture", (d) => d.prefecture);
 
         inflowBars
             .append("text")
@@ -530,13 +530,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
                 document.getElementById("captionChoro").innerHTML = "Choropleth of Japan prefectures according to the <span class='font-weight-bold'>number of emigrants</span>.";
                 document.getElementById("treemapSection").innerHTML = "Percentage of <b>Emigrant from Japan</b> by destination";
             })
-            .on("mouseover", function() {
-                d3.selectAll(".inflow-bar").transition().duration(300).style("opacity", 0.3);
-                d3.select(this).style("cursor", "pointer");
-            })
-            .on("mouseout", function() {
-                d3.selectAll(".inflow-bar").transition().duration(300).style("opacity", 1);
-            });
+            
 
         outflowBars
             .append("rect")
@@ -545,6 +539,13 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
             .attr("width", 0) // Initially set width to 0 for animation
             .attr("height", yScale.bandwidth())
             .style("fill", "#e62020")
+            .on("mouseover", function() {
+                d3.selectAll(".inflow-bar").style("opacity", 0.3);
+                d3.select(this).style("cursor", "pointer");
+            })
+            .on("mouseout", function() {
+                d3.selectAll(".inflow-bar").style("opacity", 1);
+            })
             .transition()
             .duration(1000) // Transition duration
             .attr("width", (d) => Math.abs(xScale(d.outflow) - xScale(0)))
@@ -563,10 +564,17 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
         svg
             .append("text")
             .attr("x", width / 2)
-            .attr("y", -margin.top / 2 + 10)
+            .attr("y", -margin.top / 2 + 5)
             .attr("text-anchor", "middle")
             .text(`Population Change in ${selectedPrefecture} by number of people in each age group`);
-
+        // svg
+        //     .append("foreignObject")
+        //     .attr("x", width / 2)
+        //     .attr("y", -margin.top / 2 + 10)
+        //     .attr("width", 500)
+        //     .attr("height", 200)
+        //     .append("xhtml:div")
+        //     .html(`*click on the bars to view total inflow/outflow treemap`);
 
         // Add legend
         const legend = svg
