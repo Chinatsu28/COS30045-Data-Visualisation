@@ -426,7 +426,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
             tornadoChartContainer.node().getBoundingClientRect().width -
             margin.left -
             margin.right;
-        const height = 500 - margin.top - margin.bottom;
+        const height = 550 - margin.top - margin.bottom;
 
         // Create SVG element for the chart
         const svg = tornadoChartContainer
@@ -450,7 +450,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
         const yScale = d3
             .scaleBand()
             .domain(ageGroups.map((d) => d.age_range).reverse())
-            .range([20, height - 20])
+            .range([20, height - 70])
             .padding(0.1);
 
         // Create bars for inflow
@@ -492,7 +492,7 @@ function createTornadoChart(filename, selectedPrefecture, colorRange) {
         inflowBars
             .append("text")
             .attr("class", "bar-label")
-            .attr("x", 0)
+            .attr("x", width - 30)
             .attr("y", (d) => yScale(d.age_range) + yScale.bandwidth() / 2)
             .attr("dy", "0.35em")
             .attr("color", "white")
